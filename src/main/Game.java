@@ -2,7 +2,7 @@ package main;
 
 public class Game {
 
-    private GameWindow gameWindow;
+    GameWindow gameWindow;
     private GamePanel gamePanel;
 
     public Game() {
