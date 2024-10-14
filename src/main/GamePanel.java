@@ -23,7 +23,7 @@ public class GamePanel extends JPanel {
     public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin,IMG_Doorout,
             IMG_Fall, IMG_Ground, IMG_Hit, IMG_Idle, IMG_Jump, IMG_Run;
     public BufferedImage[][] animations;
-    public int animationTick, animationIndex, animationSpeed = 12;
+    public int animationTick, animationIndex, animationSpeed = 20;
 
 
     public int playerAction = RUNNING;
@@ -40,6 +40,7 @@ public class GamePanel extends JPanel {
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
     }
+
     //    attack =  3
     //    dead =    4
     //    doorin =  8
@@ -86,8 +87,6 @@ public class GamePanel extends JPanel {
             IMG_Idle = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Idle (78x58).png")));
             IMG_Jump = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Jump (78x58).png")));
             IMG_Run = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Run (78x58).png")));
-
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -142,34 +141,32 @@ public class GamePanel extends JPanel {
         if (moving) {
             switch (playerDirection) {
                 case UP:
-                    yDelta -= 5;
+                    yDelta -= 3;
                     break;
                 case DOWN:
-                    yDelta += 5;
+                    yDelta += 3;
                     break;
                 case LEFT:
-                    xDelta -= 5;
+                    xDelta -= 3;
                     break;
                 case RIGHT:
-                    xDelta += 5;
+                    xDelta += 3;
                     break;
             }
         }
     }
 
+    public void updateGame() {
+        updateAnimationTick();
+        setAnimation();
+        updatePosition();
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        updateAnimationTick();
-
-        setAnimation();
-
-        updatePosition();
-
         g.drawImage(animations[playerAction][animationIndex], xDelta, yDelta, 312, 232, this);
 
     }
-
 
 
 
