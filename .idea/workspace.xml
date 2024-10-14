@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Attack (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Dead (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Door In (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Door Out (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Fall (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Ground (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Hit (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Idle (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Jump (78x58).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Run (78x58).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilz/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/MouseInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,22 +48,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/robi/IdeaProjects/Platformer/res",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/robi/IdeaProjects/Platformer/res&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res" />
@@ -124,7 +113,10 @@
       <updated>1728644871090</updated>
       <workItem from="1728644872138" duration="2792000" />
       <workItem from="1728673990120" duration="17000" />
-      <workItem from="1728840418303" duration="4729000" />
+      <workItem from="1728840418303" duration="4815000" />
+      <workItem from="1728846063122" duration="1019000" />
+      <workItem from="1728904303717" duration="907000" />
+      <workItem from="1728913455127" duration="6392000" />
     </task>
     <servers />
   </component>
