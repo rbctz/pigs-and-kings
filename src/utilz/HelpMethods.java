@@ -13,12 +13,29 @@ public class HelpMethods {
 
     public static boolean CanMoveHere(float x, float y, float width, float height, int[][] levelData) {
 
-        if(!IsSolid(x, y, levelData))
-            if (!IsSolid(x + width, y, levelData))
-                if(!IsSolid(x, y + height, levelData))
-                    if(!IsSolid(x + width, y + height, levelData))
+        if(IsTransparent(x, y, levelData))
+            if (IsTransparent(x + width, y, levelData))
+                if(IsTransparent(x, y + height, levelData))
+                    if(IsTransparent(x + width, y + height, levelData))
                         return true;
         return false;
+    }
+
+    public static boolean IsTransparent(float x, float y, int[][] levelData) {
+        if (x < 0 || x >= Game.GAME_WIDTH || y < 0 || y >= Game.GAME_HEIGHT) {
+            return false;
+        }
+        float xIndex = x / Game.TILE_SIZE;
+        float yIndex = y / Game.TILE_SIZE;
+
+        int value = levelData[(int) yIndex][(int) xIndex];
+
+        for (int i = 0; i < solidTiles.length; i++) {
+            if (solidTiles[i] == value) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean IsSolid(float x, float y, int[][] levelData) {
@@ -64,13 +81,13 @@ public class HelpMethods {
         }
     }
 
-    public static boolean IsEntityOnFloor(Rectangle2D.Float hitbox, int[][] levelData) {
+    public static boolean IsEntityInAir(Rectangle2D.Float hitbox, int[][] levelData) {
         //CHECK PIXELS ON BOTTOM CORNERS
 
-        if (!IsSolid(hitbox.x, hitbox.y + hitbox.height, levelData) &&
-                (!IsSolid(hitbox.x + hitbox.width, hitbox.y + hitbox.height, levelData))) {
-            return false;
+        float yOffset = hitbox.y + hitbox.height + 1;
+        if (yOffset != (int) (yOffset)) {
+            yOffset = (int) (yOffset) + 1;
         }
-        return true;
+        return IsTransparent(hitbox.x, yOffset, levelData) && IsTransparent(hitbox.x + hitbox.width, yOffset, levelData);
     }
 }
