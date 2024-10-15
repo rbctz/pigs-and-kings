@@ -22,8 +22,8 @@ public class Player extends Entity {
     public float playerSpeed = 2.0f;
 
 
-    public Player(float x, float y) {
-        super(x, y);
+    public Player(float x, float y, int width, int height) {
+        super(x, y, width, height);
         loadAnimations();
     }
 
@@ -43,10 +43,12 @@ public class Player extends Entity {
         updateAnimationTick();
         updatePosition();
         setAnimation();
+        updateHitbox();
     }
 
     public void render(Graphics g) {
-        g.drawImage(animations[playerAction][animationIndex], (int) x, (int) y, 312, 232, null);
+        g.drawImage(animations[playerAction][animationIndex], (int) x, (int) y, width, height, null);
+        drawHitbox(g);
 
     }
 
@@ -124,12 +126,6 @@ public class Player extends Entity {
             IMG_Run = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Run (78x58).png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Attack (78x58).png")).close();
-            } catch (IOException e) {
-
-            }
         }
 
         animations = new BufferedImage[10][11];

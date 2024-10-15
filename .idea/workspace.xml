@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Terrain (32x32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/level_one_data.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/levels/Level.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/levels/LevelManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilz/LoadSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +77,7 @@
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res\human" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\robi\IdeaProjects\Platformer\res" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\src" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res\human" />
     </key>
@@ -119,7 +123,8 @@
       <workItem from="1728840418303" duration="4815000" />
       <workItem from="1728846063122" duration="1019000" />
       <workItem from="1728904303717" duration="907000" />
-      <workItem from="1728913455127" duration="12961000" />
+      <workItem from="1728913455127" duration="21686000" />
+      <workItem from="1728990296005" duration="701000" />
     </task>
     <servers />
   </component>
