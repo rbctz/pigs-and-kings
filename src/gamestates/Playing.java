@@ -14,6 +14,7 @@ public class Playing extends State implements StateMethods {
 
     public Player player;
     public LevelManager levelManager;
+    public boolean paused;
 
     public Playing(Game game) {
         super(game);
@@ -33,8 +34,6 @@ public class Playing extends State implements StateMethods {
     public void windowFocusLost() {
         player.resetDirectionBool();
     }
-
-
 
 
     @Override

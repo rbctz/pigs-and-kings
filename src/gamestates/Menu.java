@@ -23,14 +23,14 @@ public class Menu extends State implements StateMethods {
     }
 
     private void loadButtons() {
-        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 1, Gamestate.PLAYING);
-        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 3, Gamestate.OPTIONS);
-        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 6, Gamestate.QUIT);
+        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (180 * Game.SCALE), 1, Gamestate.PLAYING);
+        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (250 * Game.SCALE), 3, Gamestate.OPTIONS);
+        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (320 * Game.SCALE), 6, Gamestate.QUIT);
     }
     public void drawExtras(Graphics g) {
-        g.drawImage(banner, Game.GAME_WIDTH / 2 - 440, Game.GAME_HEIGHT / 2 - 450,900, 1000, null);
-        g.drawImage(ribbon, Game.GAME_WIDTH / 2 - 440, Game.GAME_HEIGHT / 2 - 325,900, 200, null);
-        g.drawImage(title, Game.GAME_WIDTH / 2 - 220, Game.GAME_HEIGHT / 2 - 300,450, 75, null);
+        g.drawImage(banner, (int) ((float) Game.GAME_WIDTH / 2 - (220 * Game.SCALE)), Game.GAME_HEIGHT / 2 - 450,900, 1000, null);
+        g.drawImage(ribbon, (int) ((float) Game.GAME_WIDTH / 2 - (220 * Game.SCALE)), Game.GAME_HEIGHT / 2 - 325,900, 200, null);
+        g.drawImage(title, (int) ((float) Game.GAME_WIDTH / 2 - (110 * Game.SCALE)), Game.GAME_HEIGHT / 2 - 280,450, 75, null);
     }
 
     @Override

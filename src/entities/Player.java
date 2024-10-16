@@ -21,7 +21,7 @@ public class Player extends Entity {
     public boolean moving = false;
     public boolean attacking = false;
     public boolean left, up, right, down;
-    public float playerSpeed = 1.5f;
+    public float playerSpeed = 0.8f * Game.SCALE;
     public int[][] levelData;
 
     // JUMPING / GRAVITY
