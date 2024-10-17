@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ui/PauseOverlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamestates/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamestates/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilz/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +40,9 @@
     &quot;accountId&quot;: &quot;1d0c2a4a-27ee-416d-8825-0459ddb4857e&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -65,6 +67,8 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -122,7 +126,14 @@
       <workItem from="1728846063122" duration="1019000" />
       <workItem from="1728904303717" duration="907000" />
       <workItem from="1728913455127" duration="21686000" />
-      <workItem from="1728990296005" duration="24957000" />
+      <workItem from="1728990296005" duration="25589000" />
+      <workItem from="1729064471817" duration="35000" />
+      <workItem from="1729090186230" duration="182000" />
+      <workItem from="1729096899624" duration="324000" />
+      <workItem from="1729097289500" duration="3086000" />
+      <workItem from="1729148311288" duration="114000" />
+      <workItem from="1729148891919" duration="51000" />
+      <workItem from="1729161339293" duration="4531000" />
     </task>
     <servers />
   </component>

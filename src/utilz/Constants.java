@@ -10,6 +10,10 @@ public class Constants {
             public static final int B_HEIGHT_DEFAULT = 32;
             public static final int B_WIDTH = (int) (B_WIDTH_DEFAULT * Game.SCALE);
             public static final int B_HEIGHT = (int) (B_HEIGHT_DEFAULT * Game.SCALE);
+            public static final int OPTIONS_BUTTON_WIDTH_DEFAULT = 80;
+            public static final int OPTIONS_BUTTON_HEIGHT_DEFAULT = 32;
+            public static final int OPTIONS_BUTTON_WIDTH = (int) (OPTIONS_BUTTON_WIDTH_DEFAULT * Game.SCALE);
+            public static final int OPTIONS_BUTTON_HEIGHT = (int) (OPTIONS_BUTTON_HEIGHT_DEFAULT * Game.SCALE);
         }
     }
 
