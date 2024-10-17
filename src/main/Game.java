@@ -122,11 +122,4 @@ public class Game implements Runnable {
         if (Gamestate.state == Gamestate.PLAYING)
             playing.player.resetDirectionBool();
     }
-
-    public Menu getMenu() {
-        return menu;
-    }
-    public Playing getPlaying() {
-        return playing;
-    }
 }

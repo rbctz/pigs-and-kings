@@ -1,9 +1,11 @@
 package ui;
 
+import gamestates.Gamestate;
+import gamestates.Playing;
 import main.Game;
-import utilz.Constants;
 import utilz.LoadSave;
 import static utilz.Constants.UI.PauseButtons.*;
+import static utilz.Constants.UI.UrmButtons.URM_SIZE;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -11,18 +13,36 @@ import java.awt.image.BufferedImage;
 
 public class PauseOverlay {
 
+    public Playing playing;
     public BufferedImage backgroundImg;
     public int bgX, bgY, bgWidth, bgHeight;
-    public SoundButton soundButton;
 
-    public PauseOverlay() {
+    public SoundButton soundButton;
+    public UrmButton menuButton, replayButton, unpauseButton;
+
+    public PauseOverlay(Playing playing) {
+        this.playing = playing;
         loadBackground();
         createSoundButton();
+        createUrmButtons();
+    }
+
+    private void createUrmButtons() {
+        int menuX = (int) (598 * Game.SCALE);
+        int menuY = (int) (140 * Game.SCALE);
+        menuButton = new UrmButton(menuX, menuY, URM_SIZE, URM_SIZE, 2);
+        int replayX = (int) (598 * Game.SCALE);
+        int replayY = (int) (253 * Game.SCALE);
+        replayButton = new UrmButton(replayX, replayY, URM_SIZE, URM_SIZE, 1);
+        int unpauseX = (int) (380 * Game.SCALE);
+        int unpauseY = (int) (280 * Game.SCALE);
+        unpauseButton = new UrmButton(unpauseX, unpauseY, URM_SIZE, URM_SIZE, 0);
+
     }
 
     public void createSoundButton() {
-        int soundX = (int) (168  * Game.SCALE);
-        int soundY = (int) (190 * Game.SCALE);
+        int soundX = (int) (175  * Game.SCALE);
+        int soundY = (int) (195 * Game.SCALE);
         soundButton = new SoundButton(soundX, soundY,SOUND_SIZE, SOUND_SIZE);
     }
 
@@ -37,7 +57,9 @@ public class PauseOverlay {
 
     public void update() {
         soundButton.update();
-        System.out.println(!soundButton.muted);
+        menuButton.update();
+        replayButton.update();
+        unpauseButton.update();
     }
 
     public void draw(Graphics g) {
@@ -46,6 +68,11 @@ public class PauseOverlay {
 
         //SOUND BUTTON
         soundButton.draw(g);
+
+        //URM BUTTONS
+        menuButton.draw(g);
+        replayButton.draw(g);
+        unpauseButton.draw(g);
     }
 
     public void mouseDragged(MouseEvent e) {
@@ -55,6 +82,12 @@ public class PauseOverlay {
     public void mousePressed(MouseEvent e) {
         if (isIn(e, soundButton))
             soundButton.mousePressed = true;
+        else if (isIn(e, menuButton))
+            menuButton.mousePressed = true;
+        else if (isIn(e, replayButton))
+            replayButton.mousePressed = true;
+        else if (isIn(e, unpauseButton))
+            unpauseButton.mousePressed = true;
     }
 
     public void mouseReleased(MouseEvent e) {
@@ -62,15 +95,43 @@ public class PauseOverlay {
             if (soundButton.mousePressed) {
                 soundButton.muted = !soundButton.muted;
             }
+        } else if (isIn(e, menuButton)) {
+            if (menuButton.mousePressed) {
+                Gamestate.state = Gamestate.MENU;
+            }
+        } else if (isIn(e, replayButton)) {
+            if (replayButton.mousePressed) {
+                System.out.println("REPLAY LVL!");
+            }
+        } else if (isIn(e, unpauseButton)) {
+            if (unpauseButton.mousePressed) {
+                System.out.println("UNPAUSE LVL!");
+                playing.unpauseGame();
+            }
         }
         soundButton.resetBools();
-
+        menuButton.resetBools();
+        replayButton.resetBools();
+        unpauseButton.resetBools();
     }
 
     public void mouseMoved(MouseEvent e) {
         soundButton.mouseOver = false;
+        menuButton.mouseOver = false;
+        replayButton.mouseOver = false;
+        unpauseButton.mouseOver = false;
         if (isIn(e, soundButton))
             soundButton.mouseOver = true;
+        else if (isIn(e, menuButton))
+            menuButton.mouseOver = true;
+        else if (isIn(e, replayButton))
+            replayButton.mouseOver = true;
+        else if (isIn(e, unpauseButton))
+            unpauseButton.mouseOver = true;
+    }
+
+    public void unpauseGame() {
+        playing.paused = false;
     }
 
     public boolean isIn(MouseEvent e, PauseButton pauseButton) {

@@ -43,10 +43,10 @@ public class Player extends Entity {
 
     // In case the window loses focus this stops the player movement
     public void resetDirectionBool() {
-        setUp(false);
-        setDown(false);
-        setLeft(false);
-        setRight(false);
+        up = false;
+        right = false;
+        down = false;
+        left = false;
     }
 
     public void setAttacking(boolean attacking) {
@@ -109,23 +109,26 @@ public class Player extends Entity {
     public void updatePosition() {
         moving = false;
 
-        if (jump) {
+        if (jump)
             jump();
-        }
-        if (!left && !right && !inAir) {
+
+        if (!left && !right && !inAir)
             return;
-        }
+
         float xSpeed = 0;
+
         if (left)
-            xSpeed = -playerSpeed;
+            xSpeed -= playerSpeed;
+
         if (right)
-            xSpeed = playerSpeed;
+            xSpeed += playerSpeed;
 
         if (!inAir) {
             if(IsEntityInAir(hitbox, levelData)) {
                 inAir = true;
             }
         }
+
         if (inAir) {
             if (CanMoveHere(hitbox.x, hitbox.y + airSpeed, hitbox.width, hitbox.height, levelData)) {
                 hitbox.y += airSpeed;
@@ -133,11 +136,10 @@ public class Player extends Entity {
                 updateXPos(xSpeed);
             } else {
                 hitbox.y = GetEntityYPosUnderRoofOrAboveFloor(hitbox, airSpeed);
-                if (airSpeed > 0) {
+                if (airSpeed > 0)
                     resetInAir();
-                } else {
+                else
                     airSpeed = fallSpeedAfterCollision;
-                }
                 updateXPos(xSpeed);
             }
         } else {
@@ -215,41 +217,5 @@ public class Player extends Entity {
         if (IsEntityInAir(hitbox, levelData)) {
             inAir = true;
         }
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setJump(boolean jump) {
-        this.jump = jump;
     }
 }

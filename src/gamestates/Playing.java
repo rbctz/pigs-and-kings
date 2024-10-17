@@ -15,7 +15,7 @@ public class Playing extends State implements StateMethods {
 
     public Player player;
     public LevelManager levelManager;
-    public boolean paused = true;
+    public boolean paused = false;
     public PauseOverlay pauseOverlay;
 
     public Playing(Game game) {
@@ -27,32 +27,40 @@ public class Playing extends State implements StateMethods {
         levelManager = new LevelManager(game);
         player = new Player(200, 200, (int) (78 * SCALE), (int) (58 * SCALE));
         player.loadLevelData(levelManager.getCurrentLevel().getLevelData());
-        pauseOverlay = new PauseOverlay();
+        pauseOverlay = new PauseOverlay(this);
     }
 
     public void windowFocusLost() {
         player.resetDirectionBool();
     }
 
+    public void unpauseGame() {
+        paused = false;
+    }
 
     @Override
     public void update() {
-        levelManager.update();
-        player.update();
-        pauseOverlay.update();
+        if (!paused) {
+            levelManager.update();
+            player.update();
+        } else {
+            pauseOverlay.update();
+        }
     }
 
     @Override
     public void draw(Graphics g) {
         levelManager.draw(g);
         player.draw(g);
-        pauseOverlay.draw(g);
+        if (paused) {
+            pauseOverlay.draw(g);
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-            player.setAttacking(true);
+            player.attacking = true;
         }
     }
 
@@ -77,17 +85,17 @@ public class Playing extends State implements StateMethods {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                player.setLeft(true);
+                player.left = true;
                 break;
             case KeyEvent.VK_D:
-                player.setRight(true);
+                player.right = true;
                 break;
             case KeyEvent.VK_SPACE:
-                player.setJump(true);
+                player.jump = true;
                 break;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            Gamestate.state = Gamestate.MENU;
+            case KeyEvent.VK_ESCAPE:
+                paused = !paused;
+                break;
         }
     }
 
@@ -95,13 +103,13 @@ public class Playing extends State implements StateMethods {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                player.setLeft(false);
+                player.left = false;
                 break;
             case KeyEvent.VK_D:
-                player.setRight(false);
+                player.right = false;
                 break;
             case KeyEvent.VK_SPACE:
-                player.setJump(false);
+                player.jump = false;
                 break;
         }
     }
