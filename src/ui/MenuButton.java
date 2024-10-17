@@ -69,7 +69,7 @@ public class MenuButton {
         g.drawImage(button[index], xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT, null);
     }
     public void drawCustomButton(Graphics g, MenuButton mb) {
-        g.drawImage(button[index], mb.xPos - (mb.widthDefault), mb.yPos, mb.width, mb.height, null);
+        g.drawImage(button[index], mb.xPos - (mb.width / 2), mb.yPos, mb.width, mb.height, null);
     }
 
     public void update() {

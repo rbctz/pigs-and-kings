@@ -26,7 +26,7 @@ public class Menu extends State implements StateMethods {
     public final int bannerXOffset = bannerWidth / 2;
 
 
-    public final int ribbonWidth = (int) (500 * SCALE);
+    public final int ribbonWidth = (int) (600 * SCALE);
     public final int ribbonHeight = (int) (100 * SCALE);
     public final int ribbonXOffset = ribbonWidth / 2;
 
@@ -42,12 +42,12 @@ public class Menu extends State implements StateMethods {
     }
 
     private void loadButtons() {
-        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (180 * SCALE), 1, Gamestate.PLAYING);
-        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (320 * SCALE), 6, Gamestate.QUIT);
+        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * SCALE), 1, Gamestate.PLAYING);
+        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * SCALE), 6, Gamestate.QUIT);
     }
 
     private void loadCustomButtons() {
-        customButtons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (250 * SCALE), 384, 64,
+        customButtons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * SCALE), 384, 64,
                 OPTIONS_BUTTON_WIDTH,
                 OPTIONS_BUTTON_HEIGHT,
                 OPTIONS_BUTTON_WIDTH_DEFAULT,
@@ -56,8 +56,8 @@ public class Menu extends State implements StateMethods {
     }
     public void drawExtras(Graphics g) {
         g.drawImage(banner, Game.GAME_WIDTH / 2 - bannerXOffset, (int) (-30 * SCALE), bannerWidth, bannerHeight, null);
-        g.drawImage(ribbon, Game.GAME_WIDTH / 2 - ribbonXOffset, (int) (55 * SCALE), ribbonWidth, ribbonHeight, null);
-        g.drawImage(title, Game.GAME_WIDTH / 2 - titleXOffset, (int) (75 * SCALE), titleWidth, titleHeight, null);
+        g.drawImage(ribbon, Game.GAME_WIDTH / 2 - ribbonXOffset, (int) (45 * SCALE), ribbonWidth, ribbonHeight, null);
+        g.drawImage(title, Game.GAME_WIDTH / 2 - titleXOffset, (int) (65 * SCALE), titleWidth, titleHeight, null);
     }
 
     @Override
