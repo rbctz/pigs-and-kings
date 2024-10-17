@@ -16,6 +16,8 @@ public class LoadSave {
     public static final String TITLE = "/Kings and Pigs.png";
     public static final String RIBBON = "/Ribbon_Red_3Slides.png";
     public static final String BANNER = "/Banner_Vertical.png";
+    public static final String PAUSE_BANNER = "/PAUSE_BANNER.png";
+    public static final String SOUND_BUTTONS = "/sound_button.png";
 
     public static BufferedImage GetSpriteAtlas(String filename) {
         BufferedImage sprite = null;

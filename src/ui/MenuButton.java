@@ -4,7 +4,7 @@ import gamestates.Gamestate;
 import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import static utilz.Constants.UI.Buttons.*;
+import static utilz.Constants.UI.MenuButtons.*;
 
 public class MenuButton {
 

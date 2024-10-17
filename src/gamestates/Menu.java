@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import static main.Game.SCALE;
-import static utilz.Constants.UI.Buttons.*;
+import static utilz.Constants.UI.MenuButtons.*;
 
 public class Menu extends State implements StateMethods {
 
@@ -83,6 +83,11 @@ public class Menu extends State implements StateMethods {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+    }
+
+
+    public void mousePressed(MouseEvent e) {
         for (MenuButton button : buttons) {
             if (isClickInButton(e, button)) {
                 button.mousePressed = true;
