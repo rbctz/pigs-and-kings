@@ -14,7 +14,7 @@ import static utilz.HelpMethods.*;
 public class Player extends Entity {
 
     public BufferedImage[][] animations;
-    public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin,IMG_Doorout,
+    public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin, IMG_Doorout,
             IMG_Fall, IMG_Ground, IMG_Hit, IMG_Idle, IMG_Jump, IMG_Run;
     public int animationTick, animationIndex, animationSpeed = 20;
     public int playerAction = IDLE;
@@ -47,10 +47,6 @@ public class Player extends Entity {
         right = false;
         down = false;
         left = false;
-    }
-
-    public void setAttacking(boolean attacking) {
-        this.attacking = attacking;
     }
 
     public void update() {

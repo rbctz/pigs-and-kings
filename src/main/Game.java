@@ -13,8 +13,8 @@ public class Game implements Runnable {
     public Menu menu;
     public Playing playing;
 
-    public final int FPS = 120;
-    public final int UPS = 200;
+    public final static int FPS = 120;
+    public final static int UPS = 200;
 
     public final static int TILE_DEFAULT_SIZE = 32;
     public final static float SCALE = 2f;
