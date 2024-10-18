@@ -18,7 +18,7 @@ public class GameWindow  extends JFrame {
         jframe.pack();
         jframe.setLocationRelativeTo(null);
         jframe.setVisible(true);
-//        jframe.setFocusable(true);
+
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
             public void windowGainedFocus(WindowEvent e) {

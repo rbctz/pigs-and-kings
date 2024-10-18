@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+import static main.Game.GAME_HEIGHT;
 import static main.Game.SCALE;
 import static utilz.Constants.UI.MenuButtons.*;
 
@@ -16,6 +17,7 @@ public class Menu extends State implements StateMethods {
 
     public MenuButton[] buttons = new MenuButton[2];
     public MenuButton[] customButtons = new MenuButton[1];
+    public BufferedImage menuBackground = LoadSave.GetSpriteAtlas((LoadSave.MENU_BACKGROUND_IMG));
     public BufferedImage title = LoadSave.GetSpriteAtlas(LoadSave.TITLE);
     public BufferedImage ribbon = LoadSave.GetSpriteAtlas(LoadSave.RIBBON);
     public BufferedImage banner = LoadSave.GetSpriteAtlas(LoadSave.BANNER);
@@ -55,6 +57,7 @@ public class Menu extends State implements StateMethods {
                 Gamestate.OPTIONS);
     }
     public void drawExtras(Graphics g) {
+        g.drawImage(menuBackground, 0, 0, Game.GAME_WIDTH, GAME_HEIGHT, null);
         g.drawImage(banner, Game.GAME_WIDTH / 2 - bannerXOffset, (int) (-30 * SCALE), bannerWidth, bannerHeight, null);
         g.drawImage(ribbon, Game.GAME_WIDTH / 2 - ribbonXOffset, (int) (45 * SCALE), ribbonWidth, ribbonHeight, null);
         g.drawImage(title, Game.GAME_WIDTH / 2 - titleXOffset, (int) (65 * SCALE), titleWidth, titleHeight, null);

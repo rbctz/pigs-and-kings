@@ -22,7 +22,7 @@ public class GamePanel extends JPanel {
         addKeyListener(keyboardInputs);
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
-        setBackground(Color.PINK);
+        setBackground(Color.pink);
     }
 
     //    attack =  3

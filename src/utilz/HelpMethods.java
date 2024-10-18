@@ -22,7 +22,8 @@ public class HelpMethods {
     }
 
     public static boolean IsTransparent(float x, float y, int[][] levelData) {
-        if (x < 0 || x >= Game.GAME_WIDTH || y < 0 || y >= Game.GAME_HEIGHT) {
+        int maxWidth = levelData[0].length * Game.TILE_SIZE;
+        if (x < 0 || x >= maxWidth || y < 0 || y >= Game.GAME_HEIGHT) {
             return false;
         }
         float xIndex = x / Game.TILE_SIZE;
