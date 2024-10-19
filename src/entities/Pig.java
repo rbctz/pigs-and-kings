@@ -1,6 +1,6 @@
 package entities;
 
-import static utilz.Constants.EnemyConstans.*;
+import static utilz.Constants.EnemyConstants.*;
 
 public class Pig extends Enemy {
 

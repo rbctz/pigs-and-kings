@@ -7,17 +7,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import static utilz.Constants.EnemyConstans.*;
+import static utilz.Constants.EnemyConstants.*;
 
 public class EnemyManager {
 
     public Playing playing;
     public BufferedImage[][] pigAnimations;
     public ArrayList<Pig> pigs = new ArrayList<>();
+    public int levelOffset;
 
     public EnemyManager(Playing playing) {
         this.playing = playing;
         loadEnemyImages();
+        addEnemies();
     }
 
     public void update() {
@@ -26,17 +28,21 @@ public class EnemyManager {
         }
     }
 
-    public void draw(Graphics g) {
-        drawPigs(g);
+    public void draw(Graphics g, int levelOffset) {
+        drawPigs(g, levelOffset);
     }
 
-    private void drawPigs(Graphics g) {
+    public void addEnemies() {
+        pigs = LoadSave.GetPigs();
+    }
+
+    public void drawPigs(Graphics g, int levelOffset) {
         for (Pig pig : pigs) {
-            g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex], (int) pig.hitbox.x, (int) pig.hitbox.y, null);
+            g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex], (int) pig.hitbox.x - levelOffset, (int) pig.hitbox.y, PIG_WIDTH, PIG_HEIGHT, null);
         }
     }
 
-    private void loadEnemyImages() {
+    public void loadEnemyImages() {
         pigAnimations = new BufferedImage[5][11];
         BufferedImage idle = LoadSave.GetSpriteAtlas(LoadSave.PIG_IDLE);
         BufferedImage run = LoadSave.GetSpriteAtlas(LoadSave.PIG_RUN);

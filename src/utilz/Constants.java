@@ -43,8 +43,8 @@ public class Constants {
         public static final int DOWN = 3;
     }
 
-    public static class EnemyConstans {
-        public static final int PIG = 0;
+    public static class EnemyConstants {
+        public static final int PIG = 100;
 
         public static final int IDLE = 0;
         public static final int RUN = 1;
@@ -54,8 +54,8 @@ public class Constants {
 
         public static final int PIG_WIDTH_DEFAULT = 34;
         public static final int PIG_HEIGHT_DEFAULT = 28;
-        public static final int PIG_WIDTH = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE);
-        public static final int PIG_HEIGHT = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE);
+        public static final int PIG_WIDTH = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE * 1.15);
+        public static final int PIG_HEIGHT = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE * 1.15);
 
         public static int GetSpriteAmount(int enemyType, int enemyState) {
             switch (enemyType) {

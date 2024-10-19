@@ -1,5 +1,6 @@
 package utilz;
 
+import entities.Pig;
 import main.Game;
 
 import javax.imageio.ImageIO;
@@ -7,6 +8,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
+import static utilz.Constants.EnemyConstants.PIG;
 
 public class LoadSave {
 
@@ -43,9 +47,9 @@ public class LoadSave {
     //PIG
     public static final String PIG_IDLE = "/03-Pig/Idle (34x28).png";
     public static final String PIG_RUN = "/03-Pig/Run (34x28).png";
-    public static final String PIG_ATTACK = "03-Pig/Attack (34x28).png";
-    public static final String PIG_HIT = "03-Pig/Hit (34x28).png";
-    public static final String PIG_DEAD = "03-Pig/Dead (34x28).png";
+    public static final String PIG_ATTACK = "/03-Pig/Attack (34x28).png";
+    public static final String PIG_HIT = "/03-Pig/Hit (34x28).png";
+    public static final String PIG_DEAD = "/03-Pig/Dead (34x28).png";
 
     public static BufferedImage GetSpriteAtlas(String filename) {
         BufferedImage sprite = null;
@@ -59,7 +63,21 @@ public class LoadSave {
         return sprite;
     }
 
-    public
+    public static ArrayList<Pig> GetPigs() {
+        BufferedImage image = GetSpriteAtlas(LEVEL_ONE_DATA);
+        ArrayList<Pig> list = new ArrayList<>();
+
+        for (int i = 0; i < image.getHeight(); i++) {
+            for (int j = 0; j < image.getWidth(); j++) {
+                Color color = new Color(image.getRGB(j, i));
+                int value = color.getGreen();
+                if (value == PIG) {
+                    list.add(new Pig(j * Game.TILE_SIZE, i * Game.TILE_SIZE));
+                }
+            }
+        }
+        return list;
+    }
 
     public static int[][] GetLevelData() {
 
