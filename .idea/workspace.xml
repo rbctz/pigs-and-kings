@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/Decorations (32x32).png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamestates/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamestates/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Playing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/levels/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/level_one_data_long.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/level_one_data_long.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/LevelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/PauseOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PauseOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilz/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/HelpMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilz/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/LoadSave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,6 +136,7 @@
       <workItem from="1729161339293" duration="16793000" />
       <workItem from="1729241764407" duration="83000" />
       <workItem from="1729284931511" duration="6182000" />
+      <workItem from="1729332987183" duration="3117000" />
     </task>
     <servers />
   </component>
