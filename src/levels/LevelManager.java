@@ -67,7 +67,7 @@ public class LevelManager {
         for (int i = 3; i < 48; i += 10) {
             g.drawImage(decorationsSprite[5],i * Game.TILE_SIZE - levelOffset, 5 * Game.TILE_SIZE, 2 * Game.TILE_SIZE, 2 * Game.TILE_SIZE,  null);
         }
-        for (int i = 8; i < 48; i += 10) {
+        for (int i = 8; i <= 48; i += 10) {
             g.drawImage(decorationsSprite[6],i * Game.TILE_SIZE - levelOffset, 4 * Game.TILE_SIZE, 2 * Game.TILE_SIZE, 2 * Game.TILE_SIZE,  null);
         }
     }

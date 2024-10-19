@@ -125,6 +125,9 @@ public class Playing extends State implements StateMethods {
             case KeyEvent.VK_SPACE:
                 player.jump = true;
                 break;
+            case KeyEvent.VK_SHIFT:
+                player.dashing = true;
+                break;
             case KeyEvent.VK_ESCAPE:
                 paused = !paused;
                 break;
@@ -142,6 +145,9 @@ public class Playing extends State implements StateMethods {
                 break;
             case KeyEvent.VK_SPACE:
                 player.jump = false;
+                break;
+            case KeyEvent.VK_SHIFT:
+                player.dashing = false;
                 break;
         }
     }

@@ -24,8 +24,9 @@ public class Player extends Entity {
     public float playerSpeed = 0.8f * Game.SCALE;
     public int[][] levelData;
 
+    public float dashSpeed = 1f * Game.SCALE;
     // JUMPING / GRAVITY
-    public boolean jump;
+    public boolean jump = false;
     public float airSpeed = 0f;
     public float gravity = 0.037f * Game.SCALE;
     public float jumpSpeed = -2.3f * Game.SCALE;
@@ -34,6 +35,7 @@ public class Player extends Entity {
 
     public float xDrawOffset = (int) (22 * Game.SCALE);
     public float yDrawOffset = (int) (20 * Game.SCALE);
+    public boolean dashing = false;
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
@@ -114,11 +116,18 @@ public class Player extends Entity {
 
         float xSpeed = 0;
 
-        if (left)
-            xSpeed -= playerSpeed;
+        if (dashing) {
 
-        if (right)
-            xSpeed += playerSpeed;
+            if (left)
+                xSpeed = -dashSpeed - playerSpeed;
+            if (right)
+                xSpeed = dashSpeed + playerSpeed;
+        } else {
+            if (left)
+                xSpeed = - playerSpeed;
+            if (right)
+                xSpeed = playerSpeed;
+        }
 
         if (!inAir) {
             if(IsEntityInAir(hitbox, levelData)) {
