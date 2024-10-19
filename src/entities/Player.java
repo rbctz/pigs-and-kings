@@ -1,6 +1,7 @@
 package entities;
 
 import main.Game;
+import utilz.LoadSave;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -180,20 +181,16 @@ public class Player extends Entity {
     }
 
     public void loadAnimations() {
-        try {
-            IMG_Attack = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Attack (78x58).png")));
-            IMG_Dead = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Dead (78x58).png")));
-            IMG_Doorin = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Door In (78x58).png")));
-            IMG_Doorout = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Door Out (78x58).png")));
-            IMG_Fall = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Fall (78x58).png")));
-            IMG_Ground = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Ground (78x58).png")));
-            IMG_Hit = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Hit (78x58).png")));
-            IMG_Idle = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Idle (78x58).png")));
-            IMG_Jump = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Jump (78x58).png")));
-            IMG_Run = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Run (78x58).png")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        IMG_Attack = LoadSave.GetSpriteAtlas(LoadSave.KING_ATTACK);
+        IMG_Dead = LoadSave.GetSpriteAtlas(LoadSave.KING_DEAD);
+        IMG_Doorin = LoadSave.GetSpriteAtlas(LoadSave.KING_DOOR_IN);
+        IMG_Doorout = LoadSave.GetSpriteAtlas(LoadSave.KING_DOOR_OUT);
+        IMG_Fall = LoadSave.GetSpriteAtlas(LoadSave.KING_FALL);
+        IMG_Ground = LoadSave.GetSpriteAtlas(LoadSave.KING_GROUND);
+        IMG_Hit = LoadSave.GetSpriteAtlas(LoadSave.KING_HIT);
+        IMG_Idle = LoadSave.GetSpriteAtlas(LoadSave.KING_IDLE);
+        IMG_Jump = LoadSave.GetSpriteAtlas(LoadSave.KING_JUMP);
+        IMG_Run = LoadSave.GetSpriteAtlas(LoadSave.KING_RUN);
 
         animations = new BufferedImage[10][11];
         int i = 0, j;
