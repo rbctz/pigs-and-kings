@@ -59,7 +59,7 @@ public class Player extends Entity {
 
     public void draw(Graphics g, int levelOffset) {
         if (xSpeed < 0)
-            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset + width / 2 + 43,
+            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 26 * Game.SCALE),
                     (int) (hitbox.y - yDrawOffset), -width, height, null);
         else
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,

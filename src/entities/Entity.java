@@ -1,5 +1,6 @@
 package entities;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public abstract class Entity {
@@ -16,10 +17,10 @@ public abstract class Entity {
 
     }
 
-//    public void drawHitbox(Graphics g, int levelOffset) {
-//        g.setColor(Color.black);
-//        g.drawRect((int) hitbox.x - levelOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
-//    }
+    public void drawHitbox(Graphics g, int levelOffset) {
+        g.setColor(Color.black);
+        g.drawRect((int) hitbox.x - levelOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
+    }
 
     public void initHitbox(float x, float y, float width, float height) {
         hitbox = new Rectangle2D.Float(x, y, width, height);

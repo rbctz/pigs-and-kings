@@ -1,6 +1,7 @@
 package entities;
 
 import gamestates.Playing;
+import main.Game;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -21,9 +22,9 @@ public class EnemyManager {
         addEnemies();
     }
 
-    public void update(int [][] levelData) {
+    public void update(int [][] levelData, Player player) {
         for (Pig pig : pigs) {
-            pig.update(levelData);
+            pig.update(levelData, player);
         }
     }
 
@@ -38,7 +39,14 @@ public class EnemyManager {
     public void drawPigs(Graphics g, int levelOffset) {
         for (Pig pig : pigs) {
 //            pig.drawHitbox(g, levelOffset);
-            g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex], (int) pig.hitbox.x - levelOffset - PIG_X_OFFSET, (int) pig.hitbox.y - PIG_Y_OFFSET   , PIG_WIDTH, PIG_HEIGHT, null);
+            if (pig.xSpeed < 0)
+                g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex],
+                        (int) pig.hitbox.x - levelOffset - PIG_X_OFFSET, (int) pig.hitbox.y - PIG_Y_OFFSET,
+                        PIG_WIDTH, PIG_HEIGHT, null);
+            else
+                g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex],
+                        (int) (pig.hitbox.x - levelOffset - PIG_X_OFFSET + (float) PIG_WIDTH / 2 + 20 * Game.SCALE), (int) pig.hitbox.y - PIG_Y_OFFSET,
+                        - PIG_WIDTH, PIG_HEIGHT, null);
         }
     }
 
