@@ -3,11 +3,9 @@ package entities;
 import main.Game;
 import utilz.LoadSave;
 
-import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 import static utilz.Constants.PlayerConstants.*;
 import static utilz.HelpMethods.*;
@@ -26,7 +24,7 @@ public class Player extends Entity {
     float xSpeed;
     public int[][] levelData;
 
-    public float dashSpeed = 1f * Game.SCALE;
+    public float dashSpeed = 0.9f * Game.SCALE;
     // JUMPING / GRAVITY
     public boolean jump = false;
     public float airSpeed = 0f;

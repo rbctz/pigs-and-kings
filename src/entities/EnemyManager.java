@@ -14,7 +14,6 @@ public class EnemyManager {
     public Playing playing;
     public BufferedImage[][] pigAnimations;
     public ArrayList<Pig> pigs = new ArrayList<>();
-    public int levelOffset;
 
     public EnemyManager(Playing playing) {
         this.playing = playing;
@@ -51,7 +50,7 @@ public class EnemyManager {
         BufferedImage hit = LoadSave.GetSpriteAtlas(LoadSave.PIG_HIT);
         BufferedImage dead = LoadSave.GetSpriteAtlas(LoadSave.PIG_DEAD);
 
-        int i = 0, j = 0;
+        int i = 0, j;
         for (j = 0; j < 11; j++) pigAnimations[i][j] = createSubImg(idle, j);
         i++;
         for (j = 0; j < 6; j++) pigAnimations[i][j] = createSubImg(run, j);

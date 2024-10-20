@@ -41,10 +41,6 @@ public class Playing extends State implements StateMethods {
         pauseOverlay = new PauseOverlay(this);
     }
 
-    public void windowFocusLost() {
-        player.resetDirectionBool();
-    }
-
     public void unpauseGame() {
         paused = false;
     }

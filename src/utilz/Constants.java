@@ -61,20 +61,19 @@ public class Constants {
         public static final int PIG_Y_OFFSET = (int) (11 * Game.SCALE);
 
         public static int GetSpriteAmount(int enemyType, int enemyState) {
-            switch (enemyType) {
-                case PIG:
-                    switch (enemyState) {
-                        case IDLE:
-                            return 11;
-                        case RUN:
-                            return 6;
-                        case ATTACK:
-                            return 5;
-                        case HIT:
-                            return 2;
-                        case DEAD:
-                            return 4;
-                    }
+            if (enemyType == PIG) {
+                switch (enemyState) {
+                    case IDLE:
+                        return 11;
+                    case RUN:
+                        return 6;
+                    case ATTACK:
+                        return 5;
+                    case HIT:
+                        return 2;
+                    case DEAD:
+                        return 4;
+                }
             }
             return 0;
         }
