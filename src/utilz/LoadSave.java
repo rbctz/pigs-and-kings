@@ -51,6 +51,10 @@ public class LoadSave {
     public static final String PIG_HIT = "/03-Pig/Hit (34x28).png";
     public static final String PIG_DEAD = "/03-Pig/Dead (34x28).png";
 
+    //STATUS BAR
+    public static final String STATUS_BAR = "/12-Live and Coins/Live Bar.png";
+    public static final String HEART = "/12-Live and Coins/Small Heart Idle (18x14).png";
+
     public static BufferedImage GetSpriteAtlas(String filename) {
         BufferedImage sprite = null;
         InputStream is = LoadSave.class.getResourceAsStream(filename);

@@ -80,6 +80,7 @@ public class Playing extends State implements StateMethods {
         levelManager.draw(g, xLevelOffset);
         enemyManager.draw(g, xLevelOffset);
         player.draw(g, xLevelOffset);
+
         if (paused) {
             g.setColor(new Color(0, 0, 0,150));
             g.fillRect(0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT);

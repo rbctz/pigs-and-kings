@@ -34,6 +34,13 @@ public class Constants {
             public static final int VOLUME_WIDTH = (int) (VOLUME_WIDTH_DEFAULT * Game.SCALE * 1.1);
             public static final int VOLUME_HEIGHT = (int) (VOLUME_HEIGHT_DEFAULT * Game.SCALE * 1.1);
         }
+
+        public static class StatusBar {
+            public static final int STATUSBAR_X = (int) (10 * Game.SCALE);
+            public static final int STATUSBAR_Y = (int) (10 * Game.SCALE);
+            public static final int STATUSBAR_WIDTH = (int) (66 * Game.SCALE * 1.5);
+            public static final int STATUSBAR_HEIGHT = (int) (34 * Game.SCALE * 1.5);
+        }
     }
 
     public static class Directions {

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static utilz.Constants.PlayerConstants.*;
+import static utilz.Constants.UI.StatusBar.*;
 import static utilz.HelpMethods.*;
 
 public class Player extends Entity {
@@ -37,6 +38,9 @@ public class Player extends Entity {
     public float yDrawOffset = (int) (20 * Game.SCALE);
     public boolean dashing = false;
 
+    //STATUS BAR UI
+    public BufferedImage statusBar = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
+
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
@@ -58,6 +62,7 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics g, int levelOffset) {
+        g.drawImage(statusBar, STATUSBAR_X, STATUSBAR_Y, STATUSBAR_WIDTH, STATUSBAR_HEIGHT, null);
         if (xSpeed < 0)
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 26 * Game.SCALE),
                     (int) (hitbox.y - yDrawOffset), -width, height, null);
@@ -65,8 +70,8 @@ public class Player extends Entity {
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
                     (int) (hitbox.y - yDrawOffset), width, height, null);
 //        drawHitbox(g, levelOffset);
-
     }
+
 
     private void updateAnimationTick() {
         animationTick++;
