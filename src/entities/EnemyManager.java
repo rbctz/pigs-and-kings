@@ -38,20 +38,25 @@ public class EnemyManager {
 
     public void drawPigs(Graphics g, int levelOffset) {
         for (Pig pig : pigs) {
-//            pig.drawHitbox(g, levelOffset);
+            pig.drawHitbox(g, levelOffset);
             if (pig.xSpeed < 0)
                 g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex],
                         (int) pig.hitbox.x - levelOffset - PIG_X_OFFSET, (int) pig.hitbox.y - PIG_Y_OFFSET,
                         PIG_WIDTH, PIG_HEIGHT, null);
             else
                 g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex],
-                        (int) (pig.hitbox.x - levelOffset - PIG_X_OFFSET + (float) PIG_WIDTH / 2 + 20 * Game.SCALE), (int) pig.hitbox.y - PIG_Y_OFFSET,
+                        (int) (pig.hitbox.x - levelOffset - PIG_X_OFFSET + (float) PIG_WIDTH / 2 + 22 * Game.SCALE), (int) pig.hitbox.y - PIG_Y_OFFSET,
                         - PIG_WIDTH, PIG_HEIGHT, null);
         }
     }
 
     public void loadEnemyImages() {
+        loadPigSprites();
+    }
+
+    public void loadPigSprites() {
         pigAnimations = new BufferedImage[5][11];
+
         BufferedImage idle = LoadSave.GetSpriteAtlas(LoadSave.PIG_IDLE);
         BufferedImage run = LoadSave.GetSpriteAtlas(LoadSave.PIG_RUN);
         BufferedImage attack = LoadSave.GetSpriteAtlas(LoadSave.PIG_ATTACK);
