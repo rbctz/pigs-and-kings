@@ -36,7 +36,7 @@ public class Playing extends State implements StateMethods {
     private void initializeClasses() {
         levelManager = new LevelManager(game);
         enemyManager = new EnemyManager(this);
-        player = new Player(200, 200, (int) (78 * SCALE), (int) (58 * SCALE));
+        player = new Player((int) (200 * SCALE),(int) (200 * SCALE) , (int) (78 * SCALE), (int) (58 * SCALE));
         player.loadLevelData(levelManager.getCurrentLevel().getLevelData());
         pauseOverlay = new PauseOverlay(this);
     }
@@ -54,7 +54,7 @@ public class Playing extends State implements StateMethods {
         if (!paused) {
             checkCloseToBorder();
             levelManager.update();
-            enemyManager.update();
+            enemyManager.update(levelManager.getCurrentLevel().getLevelData());
             player.update();
 
         } else {

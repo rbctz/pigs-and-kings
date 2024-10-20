@@ -54,8 +54,11 @@ public class Constants {
 
         public static final int PIG_WIDTH_DEFAULT = 34;
         public static final int PIG_HEIGHT_DEFAULT = 28;
-        public static final int PIG_WIDTH = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE * 1.15);
-        public static final int PIG_HEIGHT = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE * 1.15);
+        public static final int PIG_WIDTH = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE);
+        public static final int PIG_HEIGHT = (int) (PIG_HEIGHT_DEFAULT * Game.SCALE);
+
+        public static final int PIG_X_OFFSET = (int) (11 * Game.SCALE);
+        public static final int PIG_Y_OFFSET = (int) (11 * Game.SCALE);
 
         public static int GetSpriteAmount(int enemyType, int enemyState) {
             switch (enemyType) {

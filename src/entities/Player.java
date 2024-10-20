@@ -23,6 +23,7 @@ public class Player extends Entity {
     public boolean attacking = false;
     public boolean left, up, right, down;
     public float playerSpeed = 0.8f * Game.SCALE;
+    float xSpeed;
     public int[][] levelData;
 
     public float dashSpeed = 1f * Game.SCALE;
@@ -59,7 +60,14 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics g, int levelOffset) {
-        g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset, (int) (hitbox.y - yDrawOffset), width, height, null);
+        if (xSpeed < 0)
+            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset + width / 2 + 43,
+                    (int) (hitbox.y - yDrawOffset), -width, height, null);
+        else
+            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
+                    (int) (hitbox.y - yDrawOffset), width, height, null);
+//        drawHitbox(g, levelOffset);
+
     }
 
     private void updateAnimationTick() {
@@ -115,7 +123,7 @@ public class Player extends Entity {
             if ((!left && !right) || (left && right))
                 return;
 
-        float xSpeed = 0;
+        xSpeed = 0;
 
         if (dashing) {
 

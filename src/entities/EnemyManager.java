@@ -22,9 +22,9 @@ public class EnemyManager {
         addEnemies();
     }
 
-    public void update() {
+    public void update(int [][] levelData) {
         for (Pig pig : pigs) {
-            pig.update();
+            pig.update(levelData);
         }
     }
 
@@ -38,7 +38,8 @@ public class EnemyManager {
 
     public void drawPigs(Graphics g, int levelOffset) {
         for (Pig pig : pigs) {
-            g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex], (int) pig.hitbox.x - levelOffset, (int) pig.hitbox.y, PIG_WIDTH, PIG_HEIGHT, null);
+            pig.drawHitbox(g, levelOffset);
+            g.drawImage(pigAnimations[pig.enemyState][pig.animationIndex], (int) pig.hitbox.x - levelOffset - PIG_X_OFFSET, (int) pig.hitbox.y - PIG_Y_OFFSET   , PIG_WIDTH, PIG_HEIGHT, null);
         }
     }
 

@@ -91,4 +91,8 @@ public class HelpMethods {
         }
         return IsTransparent(hitbox.x, yOffset, levelData) && IsTransparent(hitbox.x + hitbox.width, yOffset, levelData);
     }
+
+    public static boolean IsFloor(Rectangle2D.Float hitbox,float xSpeed, int[][] levelData) {
+        return IsSolid(hitbox.x + xSpeed, hitbox.y + hitbox.height + 1, levelData);
+    }
 }
