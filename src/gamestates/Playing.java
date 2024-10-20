@@ -27,6 +27,7 @@ public class Playing extends State implements StateMethods {
     public int levelTilesWidth = LoadSave.GetLevelData()[0].length;
     public int maxTilesOffset = levelTilesWidth - Game.TILES_IN_WIDTH;
     public int maxLevelOffsetX = maxTilesOffset * Game.TILE_SIZE;
+
     public Playing(Game game) {
         super(game);
         initializeClasses();
@@ -130,6 +131,9 @@ public class Playing extends State implements StateMethods {
                 break;
             case KeyEvent.VK_SPACE:
                 player.jump = true;
+                break;
+            case KeyEvent.VK_K:
+                player.attacking = true;
                 break;
             case KeyEvent.VK_SHIFT:
                 player.dashing = true;

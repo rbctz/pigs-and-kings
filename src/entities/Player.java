@@ -17,7 +17,7 @@ public class Player extends Entity {
     public BufferedImage[][] animations;
     public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin, IMG_Doorout,
             IMG_Fall, IMG_Ground, IMG_Hit, IMG_Idle, IMG_Jump, IMG_Run;
-    public int animationTick, animationIndex, animationSpeed = 20;
+    public int animationTick, animationIndex, animationSpeed = 25;
     public int playerAction = IDLE;
     public boolean moving = false;
     public boolean attacking = false;
@@ -53,9 +53,9 @@ public class Player extends Entity {
     }
 
     public void update() {
+        updateAnimationTick();
         setAnimation();
         updatePosition();
-        updateAnimationTick();
     }
 
     public void draw(Graphics g, int levelOffset) {
