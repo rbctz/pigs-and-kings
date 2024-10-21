@@ -53,7 +53,8 @@ public class LoadSave {
 
     //STATUS BAR
     public static final String STATUS_BAR = "/12-Live and Coins/Live Bar.png";
-    public static final String HEART = "/12-Live and Coins/Small Heart Idle (18x14).png";
+    public static final String SMALL_HEART = "/12-Live and Coins/Small Heart Idle (18x14).png";
+    public static final String SMALL_HEART_HIT = "/12-Live and Coins/Small Heart Hit (18x14).png";
 
     public static BufferedImage GetSpriteAtlas(String filename) {
         BufferedImage sprite = null;

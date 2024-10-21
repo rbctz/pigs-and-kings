@@ -38,8 +38,30 @@ public class Constants {
         public static class StatusBar {
             public static final int STATUSBAR_X = (int) (10 * Game.SCALE);
             public static final int STATUSBAR_Y = (int) (10 * Game.SCALE);
-            public static final int STATUSBAR_WIDTH = (int) (66 * Game.SCALE * 1.5);
-            public static final int STATUSBAR_HEIGHT = (int) (34 * Game.SCALE * 1.5);
+            public static final int STATUSBAR_WIDTH_DEFAULT = 66;
+            public static final int STATUSBAR_HEIGHT_DEFAULT = 34;
+            public static final int STATUSBAR_WIDTH = (int) (STATUSBAR_WIDTH_DEFAULT * Game.SCALE * 1.5);
+            public static final int STATUSBAR_HEIGHT = (int) (STATUSBAR_HEIGHT_DEFAULT * Game.SCALE * 1.5);
+
+            public static final int HEART_X_OFFSET = (int) (27 * Game.SCALE);
+            public static final int HEART_X = (int) (16 * Game.SCALE);
+            public static final int HEART_Y = (int) (25 * Game.SCALE);
+            public static final int HEART_WIDTH_DEFAULT = 18;
+            public static final int HEART_HEIGHT_DEFAULT = 14;
+            public static final int HEART_WIDTH = (int) (HEART_WIDTH_DEFAULT * Game.SCALE * 1.5);
+            public static final int HEART_HEIGHT = (int) (HEART_HEIGHT_DEFAULT * Game.SCALE * 1.5);
+
+            public static final int HEART_IDLE = 0;
+            public static final int HEART_HIT = 1;
+
+            public static int GetHeartSpriteAmount(int heartType) {
+                return switch (heartType) {
+                    case HEART_IDLE -> 8;
+                    case HEART_HIT -> 2;
+                    default -> 0;
+                };
+            }
+
         }
     }
 

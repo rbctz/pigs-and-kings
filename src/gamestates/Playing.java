@@ -79,7 +79,7 @@ public class Playing extends State implements StateMethods {
     public void draw(Graphics g) {
         levelManager.draw(g, xLevelOffset);
         enemyManager.draw(g, xLevelOffset);
-        player.draw(g, xLevelOffset);
+//        player.draw(g, xLevelOffset);
 
         if (paused) {
             g.setColor(new Color(0, 0, 0,150));

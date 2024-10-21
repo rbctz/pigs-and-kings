@@ -1,10 +1,12 @@
 package entities;
 
 import main.Game;
+import ui.StatusBar;
 import utilz.LoadSave;
 
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import static utilz.Constants.PlayerConstants.*;
@@ -25,7 +27,10 @@ public class Player extends Entity {
     float xSpeed;
     public int[][] levelData;
 
-    public float dashSpeed = 0.9f * Game.SCALE;
+    //HP
+    public final int maxHP = 3;
+    public int currHP = maxHP;
+
     // JUMPING / GRAVITY
     public boolean jump = false;
     public float airSpeed = 0f;
@@ -36,33 +41,36 @@ public class Player extends Entity {
 
     public float xDrawOffset = (int) (22 * Game.SCALE);
     public float yDrawOffset = (int) (20 * Game.SCALE);
+
+    //DASH
     public boolean dashing = false;
+    public float dashSpeed = 0.9f * Game.SCALE;
+
+    //ATTACK BOX
+    public Rectangle2D.Float attackBox;
 
     //STATUS BAR UI
-    public BufferedImage statusBar = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
+    public StatusBar statusBar = new StatusBar(this);
+
+    public boolean hit = false;
+
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
         initHitbox(x, y, (int) (19 * Game.SCALE), (int) (23 * Game.SCALE));
-    }
-
-    // In case the window loses focus this stops the player movement
-    public void resetDirectionBool() {
-        up = false;
-        right = false;
-        down = false;
-        left = false;
+        initAttackBox();
     }
 
     public void update() {
+        statusBar.update();
+        updateAttackBox();
         updateAnimationTick();
         setAnimation();
         updatePosition();
     }
 
     public void draw(Graphics g, int levelOffset) {
-        g.drawImage(statusBar, STATUSBAR_X, STATUSBAR_Y, STATUSBAR_WIDTH, STATUSBAR_HEIGHT, null);
         if (xSpeed < 0)
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 26 * Game.SCALE),
                     (int) (hitbox.y - yDrawOffset), -width, height, null);
@@ -70,8 +78,14 @@ public class Player extends Entity {
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
                     (int) (hitbox.y - yDrawOffset), width, height, null);
 //        drawHitbox(g, levelOffset);
+        drawAttackBox(g, levelOffset);
+        statusBar.draw(g);
     }
 
+    public void drawAttackBox(Graphics g, int levelOffset) {
+        g.setColor(Color.red);
+        g.drawRect((int) attackBox.x - levelOffset, (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
+    }
 
     private void updateAnimationTick() {
         animationTick++;
@@ -109,6 +123,22 @@ public class Player extends Entity {
         if (startAnimation != playerAction) {
             resetAnimation();
         }
+    }
+
+    public void updateAttackBox() {
+        if (xSpeed >= 0) {
+            attackBox.x = hitbox.x + hitbox.width + (int) (10 * Game.SCALE);
+        } else {
+            attackBox.x = hitbox.x - hitbox.width - (int) (15 * Game.SCALE);
+        }
+        attackBox.y = hitbox.y - 20 * Game.SCALE ;
+    }
+
+    public void initAttackBox() {
+        attackBox = new Rectangle2D.Float(x, y, 25 * Game.SCALE, 50 * Game.SCALE);
+    }
+
+    public void hit() {
     }
 
     public void resetAnimation() {
@@ -231,5 +261,13 @@ public class Player extends Entity {
         if (IsEntityInAir(hitbox, levelData)) {
             inAir = true;
         }
+    }
+
+    // In case the window loses focus this stops the player movement
+    public void resetDirectionBool() {
+        up = false;
+        right = false;
+        down = false;
+        left = false;
     }
 }

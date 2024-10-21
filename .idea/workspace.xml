@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Big Diamond Hit (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Big Diamond Idle (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Big Heart Hit (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Big Heart Idle (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Live Bar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Numbers (6x8).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Small Diamond (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Small Heart Hit (18x14).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/12-Live and Coins/Small Heart Idle (18x14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/StatusBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Pig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamestates/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilz/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilz/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/LoadSave.java" afterDir="false" />
     </list>
@@ -148,7 +141,9 @@
       <workItem from="1729332987183" duration="6947000" />
       <workItem from="1729348061969" duration="6392000" />
       <workItem from="1729410746119" duration="7089000" />
-      <workItem from="1729428027293" duration="6417000" />
+      <workItem from="1729428027293" duration="7268000" />
+      <workItem from="1729516123069" duration="42000" />
+      <workItem from="1729530001541" duration="4271000" />
     </task>
     <servers />
   </component>
