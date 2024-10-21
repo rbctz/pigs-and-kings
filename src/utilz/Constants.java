@@ -127,6 +127,7 @@ public class Constants {
     }
 
     public static class PlayerConstants {
+        public static final int PLAYER_DAMAGE = 10;
         public static final int ATTACK = 0;
         public static final int DEAD = 1;
         public static final int DOOR_IN = 2;

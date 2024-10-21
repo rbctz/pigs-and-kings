@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static utilz.Constants.EnemyConstants.*;
+import static utilz.Constants.PlayerConstants.PLAYER_DAMAGE;
 
 public class EnemyManager {
 
@@ -55,15 +56,6 @@ public class EnemyManager {
         }
     }
 
-    public void checkEnemyHit(Rectangle2D.Float attackBox) {
-        for (Pig pig : pigs)
-            if (pig.active)
-                if (attackBox.intersects(pig.hitbox)) {
-                    pig.hurt(10);
-                    return;
-                }
-    }
-
     public void loadEnemyImages() {
         loadPigSprites();
     }
@@ -91,5 +83,19 @@ public class EnemyManager {
 
     public BufferedImage createSubImg(BufferedImage image, int row) {
         return image.getSubimage( PIG_WIDTH_DEFAULT * row, 0, PIG_WIDTH_DEFAULT, PIG_HEIGHT_DEFAULT);
+    }
+
+    public void checkEnemyHit(Rectangle2D.Float attackBox) {
+        for (Pig pig : pigs)
+            if (pig.active)
+                if (attackBox.intersects(pig.hitbox)) {
+                    pig.hurt(PLAYER_DAMAGE);
+                    return;
+                }
+    }
+
+    public void resetAllEnemies() {
+        for (Pig pig : pigs)
+            pig.resetEnemy();
     }
 }

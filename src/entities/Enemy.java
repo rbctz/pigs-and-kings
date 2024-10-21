@@ -22,8 +22,8 @@ public abstract class Enemy extends Entity{
     protected int walkDir;
     protected int tileY;
     protected float attackRange = 18 * Game.SCALE;
-    protected int maxHP;
-    protected int currHP;
+    protected int maxHP = 100;
+    protected int currHP = maxHP;
     protected boolean active = true;
     protected boolean attackChecked;
 
@@ -120,20 +120,6 @@ public abstract class Enemy extends Entity{
 
     }
 
-    protected void hurt(int amount) {
-        currHP -= amount;
-        if (currHP <= 0)
-            newState(DEAD);
-        else
-            newState(HIT);
-    }
-
-    protected void checkEnemyHit(Rectangle2D.Float attackBox, Player player) {
-        if (attackBox.intersects(player.hitbox))
-            player.changeHP(GetEnemyDamage(enemyType) * (-1));
-        attackChecked = true;
-    }
-
     protected void newState(int enemyState) {
         this.enemyState = enemyState;
         resetAnimation();
@@ -149,5 +135,29 @@ public abstract class Enemy extends Entity{
     protected void resetAnimation() {
         animationIndex = 0;
         animationTick = 0;
+    }
+
+    protected void hurt(int amount) {
+        currHP -= amount;
+        if (currHP > 0)
+            newState(HIT);
+        else
+            newState(DEAD);
+    }
+
+    protected void checkEnemyHit(Rectangle2D.Float attackBox, Player player) {
+        if (attackBox.intersects(player.hitbox))
+            player.changeHP(GetEnemyDamage(enemyType) * (-1));
+        attackChecked = true;
+    }
+
+    protected void resetEnemy() {
+        hitbox.x = x;
+        hitbox.y = y;
+        firstUpdate = true;
+        currHP = maxHP;
+        newState(IDLE);
+        active = true;
+        fallSpeed = 0;
     }
 }

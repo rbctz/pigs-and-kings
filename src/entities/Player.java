@@ -68,11 +68,11 @@ public class Player extends Entity {
     }
 
     public void update() {
+        statusBar.update();
         if (currHP <= 0) {
             playing.gameOver = true;
             return;
         }
-        statusBar.update();
         updateAttackBox();
         updateAnimationTick();
         setAnimation();
@@ -154,25 +154,6 @@ public class Player extends Entity {
         attackBox = new Rectangle2D.Float(x, y, 25 * Game.SCALE, 50 * Game.SCALE);
     }
 
-    public void changeHP(int amount) {
-        currHP += amount;
-        if (amount < 0)
-            statusBar.checkHitHeart = true;
-        if (currHP <= 0) {
-            currHP = 0;
-            //gameOver();
-        } else if (currHP > maxHP) {
-            currHP = maxHP;
-        }
-    }
-
-    public void checkAttack() {
-        if (attackChecked || animationIndex != 0)
-            return;
-        attackChecked = true;
-        playing.checkEnemyHit(attackBox);
-    }
-
     public void resetAnimation() {
         animationTick = 0;
         animationIndex = 0;
@@ -191,7 +172,6 @@ public class Player extends Entity {
         xSpeed = 0;
 
         if (dashing) {
-
             if (left)
                 xSpeed = -dashSpeed - playerSpeed;
             if (right)
@@ -249,6 +229,25 @@ public class Player extends Entity {
         }
     }
 
+    public void changeHP(int amount) {
+        currHP += amount;
+        if (amount < 0)
+            statusBar.checkHitHeart = true;
+        if (currHP <= 0) {
+            currHP = 0;
+            //gameOver();
+        } else if (currHP > maxHP) {
+            currHP = maxHP;
+        }
+    }
+
+    public void checkAttack() {
+        if (attackChecked || animationIndex != 0)
+            return;
+        attackChecked = true;
+        playing.checkEnemyHit(attackBox);
+    }
+
     public BufferedImage createSubImg(BufferedImage image, int row) {
         return image.getSubimage( 78 * row, 0, 78, 58);
     }
@@ -301,5 +300,20 @@ public class Player extends Entity {
         right = false;
         down = false;
         left = false;
+    }
+
+    public void resetAll() {
+        resetDirectionBool();
+        resetAnimation();
+        resetInAir();
+        attacking = false;
+        moving = false;
+        playerAction = IDLE;
+        currHP = maxHP;
+        hitbox.x = x;
+        hitbox.y = y;
+
+        if (IsEntityInAir(hitbox, levelData))
+            inAir = true;
     }
 }

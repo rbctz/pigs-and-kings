@@ -39,7 +39,7 @@ public class Playing extends State implements StateMethods {
 
     @Override
     public void update() {
-        if (!paused) {
+        if (!paused && !gameOver) {
             checkCloseToBorder();
             levelManager.update();
             enemyManager.update(levelManager.getCurrentLevel().getLevelData(), player);
@@ -178,6 +178,9 @@ public class Playing extends State implements StateMethods {
     }
 
     public void resetAll() {
-        //TODO
+        gameOver = false;
+        paused = false;
+        player.resetAll();
+        enemyManager.resetAllEnemies();
     }
 }
