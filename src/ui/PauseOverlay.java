@@ -73,6 +73,10 @@ public class PauseOverlay {
     }
 
     public void draw(Graphics g) {
+        //BLACK BACKGROUND
+        g.setColor(new Color(0, 0, 0,150));
+        g.fillRect(0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT);
+
         // BANNER
         g.drawImage(backgroundImg, bgX, bgY, bgWidth, bgHeight, null);
 

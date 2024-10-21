@@ -1,5 +1,6 @@
 package entities;
 
+import gamestates.Playing;
 import main.Game;
 import ui.StatusBar;
 import utilz.LoadSave;
@@ -15,6 +16,7 @@ import static utilz.HelpMethods.*;
 
 public class Player extends Entity {
 
+    public Playing playing;
     public BufferedImage[][] animations;
     public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin, IMG_Doorout,
             IMG_Fall, IMG_Ground, IMG_Hit, IMG_Idle, IMG_Jump, IMG_Run;
@@ -26,6 +28,7 @@ public class Player extends Entity {
     public float playerSpeed = 0.8f * Game.SCALE;
     float xSpeed;
     public int[][] levelData;
+    public boolean attackChecked = false;
 
     //HP
     public final int maxHP = 3;
@@ -55,19 +58,27 @@ public class Player extends Entity {
     public boolean hit = false;
 
 
-    public Player(float x, float y, int width, int height) {
+
+    public Player(float x, float y, int width, int height, Playing playing) {
         super(x, y, width, height);
+        this.playing = playing;
         loadAnimations();
         initHitbox(x, y, (int) (19 * Game.SCALE), (int) (23 * Game.SCALE));
         initAttackBox();
     }
 
     public void update() {
+        if (currHP <= 0) {
+            playing.gameOver = true;
+            return;
+        }
         statusBar.update();
         updateAttackBox();
         updateAnimationTick();
         setAnimation();
         updatePosition();
+        if (attacking)
+            checkAttack();
     }
 
     public void draw(Graphics g, int levelOffset) {
@@ -77,9 +88,13 @@ public class Player extends Entity {
         else
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
                     (int) (hitbox.y - yDrawOffset), width, height, null);
-//        drawHitbox(g, levelOffset);
-        drawAttackBox(g, levelOffset);
+//        drawBoxes(g, levelOffset);
         statusBar.draw(g);
+    }
+
+    public void drawBoxes(Graphics g, int levelOffset) {
+        drawHitbox(g, levelOffset);
+        drawAttackBox(g, levelOffset);
     }
 
     public void drawAttackBox(Graphics g, int levelOffset) {
@@ -95,6 +110,7 @@ public class Player extends Entity {
             if (animationIndex >= GetSpriteAmount(playerAction)) {
                 animationIndex = 0;
                 attacking = false;
+                attackChecked = false;
             }
         }
     }
@@ -138,7 +154,23 @@ public class Player extends Entity {
         attackBox = new Rectangle2D.Float(x, y, 25 * Game.SCALE, 50 * Game.SCALE);
     }
 
-    public void hit() {
+    public void changeHP(int amount) {
+        currHP += amount;
+        if (amount < 0)
+            statusBar.checkHitHeart = true;
+        if (currHP <= 0) {
+            currHP = 0;
+            //gameOver();
+        } else if (currHP > maxHP) {
+            currHP = maxHP;
+        }
+    }
+
+    public void checkAttack() {
+        if (attackChecked || animationIndex != 0)
+            return;
+        attackChecked = true;
+        playing.checkEnemyHit(attackBox);
     }
 
     public void resetAnimation() {

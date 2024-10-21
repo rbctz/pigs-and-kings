@@ -33,7 +33,7 @@ public class Pig extends Enemy {
     }
 
     public void update(int[][] levelData, Player player) {
-        updateMovement(levelData, player);
+        updateBehavior(levelData, player);
         updateAnimationTick();
         updateAttackBox();
     }
@@ -43,7 +43,7 @@ public class Pig extends Enemy {
         g.drawRect((int) attackBox.x - levelOffset, (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
     }
 
-    public void updateMovement(int[][] levelData, Player player) {
+    public void updateBehavior(int[][] levelData, Player player) {
         firstUpdateCheck(levelData);
 
         if (inAir) {
@@ -60,6 +60,17 @@ public class Pig extends Enemy {
                         newState(ATTACK);
                     move(levelData);
                     break;
+                case ATTACK:
+                    if (animationIndex == 0)
+                        attackChecked = false;
+                    if (animationIndex == 2 && !attackChecked)
+                        checkEnemyHit(attackBox, player);
+                    break;
+                case HIT:
+                    break;
+                case DEAD:
+                    break;
+
             }
         }
     }

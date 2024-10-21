@@ -106,6 +106,24 @@ public class Constants {
             }
             return 0;
         }
+
+        public static int GetMaxHP(int enemyType) {
+            switch (enemyType) {
+                case PIG:
+                    return 10;
+                default:
+                    return 0;
+            }
+        }
+
+        public static int GetEnemyDamage(int enemyType) {
+            switch (enemyType) {
+                case PIG:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
     }
 
     public static class PlayerConstants {

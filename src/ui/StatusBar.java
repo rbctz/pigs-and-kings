@@ -1,8 +1,6 @@
 package ui;
 
 import entities.Player;
-import main.Game;
-import utilz.Constants;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -12,7 +10,6 @@ import static utilz.Constants.UI.StatusBar.*;
 
 public class StatusBar {
 
-
     public Player player;
     public BufferedImage statusBar = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
 
@@ -21,8 +18,10 @@ public class StatusBar {
     public int heartAnimationIndex = 0;
     public int heartAnimationTick = 0;
     public int heartAnimationSpeed = 30;
+    public int heartHitAnimationTick = 0;
+    public int heartHitAnimationIndex = 0;
     public BufferedImage[] heartHitAnimations;
-    public boolean heartLost = false;
+    public boolean checkHitHeart = false;
 
     public StatusBar(Player player) {
         this.player = player;
@@ -30,6 +29,7 @@ public class StatusBar {
     }
 
     public void update() {
+        updateHitAnimationTick();
         updateAnimationTick();
     }
 
@@ -46,12 +46,10 @@ public class StatusBar {
         for (int i = 0; i < player.currHP; i++) {
             g.drawImage(heartAnimations[heartAnimationIndex], HEART_X_OFFSET + HEART_X * i, HEART_Y, HEART_WIDTH, HEART_HEIGHT, null);
         }
-//        if (heartLost) {
-//            g.drawImage(heartHitAnimations[])
-//        }
+        if (checkHitHeart) {
+            g.drawImage(heartHitAnimations[heartHitAnimationIndex],HEART_X_OFFSET + HEART_X * player.currHP, HEART_Y, HEART_WIDTH, HEART_HEIGHT, null);
+        }
     }
-
-
 
     public void loadHearts() {
         heartAnimations = new BufferedImage[8];
@@ -74,7 +72,15 @@ public class StatusBar {
         }
     }
 
-    public void hit(Graphics g) {
-
+    public void updateHitAnimationTick() {
+        heartHitAnimationTick++;
+        if (heartHitAnimationTick >= heartAnimationSpeed * 1.5) {
+            heartHitAnimationTick = 0;
+            heartHitAnimationIndex++;
+            if (heartHitAnimationIndex >= 2) {
+                heartHitAnimationIndex = 0;
+                checkHitHeart = false;
+            }
+        }
     }
 }

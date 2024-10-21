@@ -2,6 +2,8 @@ package entities;
 
 import main.Game;
 
+import java.awt.geom.Rectangle2D;
+
 import static utilz.Constants.Directions.LEFT;
 import static utilz.Constants.Directions.RIGHT;
 import static utilz.Constants.EnemyConstants.*;
@@ -20,12 +22,18 @@ public abstract class Enemy extends Entity{
     protected int walkDir;
     protected int tileY;
     protected float attackRange = 18 * Game.SCALE;
+    protected int maxHP;
+    protected int currHP;
+    protected boolean active = true;
+    protected boolean attackChecked;
 
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
         this.enemyType = enemyType;
         initHitbox(x, y, width, height);
+        maxHP = GetMaxHP(enemyType);
+        currHP = maxHP;
     }
 
     protected void updateAnimationTick() {
@@ -35,8 +43,10 @@ public abstract class Enemy extends Entity{
             animationIndex++;
             if (animationIndex >= GetSpriteAmount(PIG, enemyState)) {
                 animationIndex = 0;
-                if (enemyState == ATTACK)
-                    enemyState = IDLE;
+                switch (enemyState) {
+                    case ATTACK, HIT -> enemyState = IDLE;
+                    case DEAD -> active = false;
+                }
             }
         }
     }
@@ -108,6 +118,20 @@ public abstract class Enemy extends Entity{
         else
             return distance <= attackRange;
 
+    }
+
+    protected void hurt(int amount) {
+        currHP -= amount;
+        if (currHP <= 0)
+            newState(DEAD);
+        else
+            newState(HIT);
+    }
+
+    protected void checkEnemyHit(Rectangle2D.Float attackBox, Player player) {
+        if (attackBox.intersects(player.hitbox))
+            player.changeHP(GetEnemyDamage(enemyType) * (-1));
+        attackChecked = true;
     }
 
     protected void newState(int enemyState) {
