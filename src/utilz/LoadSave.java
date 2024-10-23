@@ -1,26 +1,22 @@
 package utilz;
 
-import entities.Pig;
-import main.Game;
-
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-
-import static utilz.Constants.EnemyConstants.PIG;
 
 public class LoadSave {
 
     //LEVEL
     public static final String LEVEL_ATLAS = "/Terrain (32x32).png";
-    public static final String LEVEL_ONE_DATA = "/lvls/level_one_data_long.png";
     public static final String LEVEL_DECORATIONS = "/Decorations (32x32).png";
+    public static final String DOOR_OPEN = "/11-Door/Opening (46x56).png";
+    public static final String DOOR_CLOSE = "/11-Door/Closing (46x56).png";
+    public static final String DOOR_IDLE = "/11-Door/Idle.png";
+
 
     //KING
     public static final String KING_ATTACK = "/01-King Human/Attack (78x58).png";
@@ -105,39 +101,5 @@ public class LoadSave {
             e.printStackTrace();
         }
         return sprite;
-    }
-
-    public static ArrayList<Pig> GetPigs() {
-        BufferedImage image = GetSpriteAtlas(LEVEL_ONE_DATA);
-        ArrayList<Pig> list = new ArrayList<>();
-
-        for (int i = 0; i < image.getHeight(); i++) {
-            for (int j = 0; j < image.getWidth(); j++) {
-                Color color = new Color(image.getRGB(j, i));
-                int value = color.getGreen();
-                if (value == PIG) {
-                    list.add(new Pig(j * Game.TILE_SIZE, i * Game.TILE_SIZE));
-                }
-            }
-        }
-        return list;
-    }
-
-    public static int[][] GetLevelData() {
-
-        BufferedImage image = GetSpriteAtlas(LEVEL_ONE_DATA);
-        int[][] levelData = new int[image.getHeight()][image.getWidth()];
-
-        for (int i = 0; i < image.getHeight(); i++) {
-            for (int j = 0; j < image.getWidth(); j++) {
-                Color color = new Color(image.getRGB(j, i));
-                int value = color.getRed();
-                if (value >= 247) {
-                    value = 0;
-                }
-                levelData[i][j] = value;
-            }
-        }
-        return levelData;
     }
 }

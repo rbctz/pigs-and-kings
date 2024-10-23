@@ -1,8 +1,15 @@
 package utilz;
 
+import entities.Pig;
 import main.Game;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import static utilz.Constants.EnemyConstants.PIG;
+import static utilz.LoadSave.GetSpriteAtlas;
 
 public class HelpMethods {
 
@@ -120,5 +127,38 @@ public class HelpMethods {
             return IsAllTilesWalkable(xTile2, xTile1, yTile, levelData);
         else
             return IsAllTilesWalkable(xTile1, xTile2, yTile, levelData);
+    }
+
+    public static int[][] GetLevelData(BufferedImage image) {
+
+        int[][] levelData = new int[image.getHeight()][image.getWidth()];
+
+        for (int i = 0; i < image.getHeight(); i++) {
+            for (int j = 0; j < image.getWidth(); j++) {
+                Color color = new Color(image.getRGB(j, i));
+                int value = color.getRed();
+                if (value >= 247) {
+                    value = 0;
+                }
+                levelData[i][j] = value;
+            }
+        }
+        return levelData;
+    }
+
+    public static ArrayList<Pig> GetPigs(BufferedImage image) {
+
+        ArrayList<Pig> list = new ArrayList<>();
+
+        for (int i = 0; i < image.getHeight(); i++) {
+            for (int j = 0; j < image.getWidth(); j++) {
+                Color color = new Color(image.getRGB(j, i));
+                int value = color.getGreen();
+                if (value == PIG) {
+                    list.add(new Pig(j * Game.TILE_SIZE, i * Game.TILE_SIZE));
+                }
+            }
+        }
+        return list;
     }
 }

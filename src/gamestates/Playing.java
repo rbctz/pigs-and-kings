@@ -6,7 +6,6 @@ import levels.LevelManager;
 import main.Game;
 import ui.GameOverOverlay;
 import ui.PauseOverlay;
-import utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -14,6 +13,8 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 import static main.Game.SCALE;
+import static main.Game.TILE_SIZE;
+import static utilz.Constants.Door.*;
 
 public class Playing extends State implements StateMethods {
 
@@ -28,13 +29,27 @@ public class Playing extends State implements StateMethods {
     public int xLevelOffset;
     public int leftBorder = (int) (0.3 * Game.GAME_WIDTH);
     public int rightBorder = (int) (0.7 * Game.GAME_WIDTH);
-    public int levelTilesWidth = LoadSave.GetLevelData()[0].length;
-    public int maxTilesOffset = levelTilesWidth - Game.TILES_IN_WIDTH;
-    public int maxLevelOffsetX = maxTilesOffset * Game.TILE_SIZE;
+    public int maxLevelOffsetX;
 
     public Playing(Game game) {
         super(game);
         initializeClasses();
+
+        calculateLevelOffset();
+        loadStartLevel();
+    }
+
+    public void calculateLevelOffset() {
+        maxLevelOffsetX = levelManager.getCurrentLevel().maxLevelOffsetX;
+    }
+
+    public void loadStartLevel() {
+        enemyManager.loadEnemies(levelManager.getCurrentLevel());
+    }
+
+    public void loadNextLevel() {
+        resetAll();
+        levelManager.loadNextLevel();
     }
 
     @Override
@@ -53,8 +68,8 @@ public class Playing extends State implements StateMethods {
     @Override
     public void draw(Graphics g) {
         levelManager.draw(g, xLevelOffset);
-        enemyManager.draw(g, xLevelOffset);
         player.draw(g, xLevelOffset);
+        enemyManager.draw(g, xLevelOffset);
 
         if (paused) {
             pauseOverlay.draw(g);
@@ -66,7 +81,7 @@ public class Playing extends State implements StateMethods {
     public void initializeClasses() {
         levelManager = new LevelManager(game);
         enemyManager = new EnemyManager(this);
-        player = new Player((int) (200 * SCALE),(int) (200 * SCALE) , (int) (78 * SCALE), (int) (58 * SCALE), this);
+        player = new Player((int) (180 * SCALE), (int) (290 * SCALE) , (int) (78 * SCALE), (int) (58 * SCALE), this);
         player.loadLevelData(levelManager.getCurrentLevel().getLevelData());
         pauseOverlay = new PauseOverlay(this);
         gameOverOverlay = new GameOverOverlay(this);
@@ -99,10 +114,10 @@ public class Playing extends State implements StateMethods {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (!gameOver)
-            if (e.getButton() == MouseEvent.BUTTON1) {
-                player.attacking = true;
-            }
+//        if (!gameOver)
+//            if (e.getButton() == MouseEvent.BUTTON1) {
+//                player.attacking = true;
+//            }
     }
 
     public void mousePressed(MouseEvent e) {
@@ -149,6 +164,13 @@ public class Playing extends State implements StateMethods {
                 case KeyEvent.VK_K:
                     player.attacking = true;
                     break;
+                case KeyEvent.VK_E:
+                    if (player.hitbox.x > 47 * TILE_SIZE && player.hitbox.x < 48 * TILE_SIZE && levelManager.levelIndex == 0 ||
+                            player.hitbox.x > 5 * TILE_SIZE && player.hitbox.x < 6 * TILE_SIZE && levelManager.levelIndex == 1) {
+                        player.exitingRoom = true;
+                        levelManager.door.doorState = OPENING;
+                    }
+                    break;
                 case KeyEvent.VK_SHIFT:
                     player.dashing = true;
                     break;
@@ -182,5 +204,6 @@ public class Playing extends State implements StateMethods {
         paused = false;
         player.resetAll();
         enemyManager.resetAllEnemies();
+        levelManager.door.resetAll();
     }
 }

@@ -19,8 +19,8 @@ public class Player extends Entity {
     public BufferedImage[][] animations;
     public BufferedImage IMG_Attack, IMG_Dead, IMG_Doorin, IMG_Doorout,
             IMG_Fall, IMG_Ground, IMG_Hit, IMG_Idle, IMG_Jump, IMG_Run;
-    public int animationTick, animationIndex, animationSpeed = 25;
-    public int playerAction = IDLE;
+    public int animationTick, animationIndex, animationSpeed = 35;
+    public int playerAction = DOOR_OUT;
     public boolean moving = false;
     public boolean attacking = false;
     public boolean hit = false;
@@ -30,6 +30,9 @@ public class Player extends Entity {
     public int[][] levelData;
     public boolean attackChecked = false;
     public boolean goingLeft = false;
+    public boolean enteringRoom = true;
+    public boolean exitingRoom = false;
+    public boolean shouldDraw = true;
 
     //HP
     public final int maxHP = 3;
@@ -81,13 +84,15 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics g, int levelOffset) {
-        if (goingLeft)
-            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 24 * Game.SCALE),
-                    (int) (hitbox.y - yDrawOffset), -width, height, null);
-        else
-            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
-                    (int) (hitbox.y - yDrawOffset), width, height, null);
-        drawBoxes(g, levelOffset);
+        if (shouldDraw) {
+            if (goingLeft)
+                g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 24 * Game.SCALE),
+                        (int) (hitbox.y - yDrawOffset), -width, height, null);
+            else
+                g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
+                        (int) (hitbox.y - yDrawOffset), width, height, null);
+        }
+//        drawBoxes(g, levelOffset);
         statusBar.draw(g);
     }
 
@@ -111,6 +116,13 @@ public class Player extends Entity {
                 attacking = false;
                 attackChecked = false;
                 hit = false;
+                enteringRoom = false;
+                exitingRoom = false;
+                if (playerAction == DOOR_IN) {
+                    shouldDraw = false;
+                    playing.levelManager.loadNextLevel();
+                    playing.resetAll();
+                }
             }
         }
     }
@@ -119,13 +131,17 @@ public class Player extends Entity {
 
         int startAnimation = playerAction;
 
-        if (hit)
+        if (enteringRoom) {
+            playerAction = DOOR_OUT;
+        } else if (exitingRoom) {
+            playerAction = DOOR_IN;
+        } else if (hit) {
             playerAction = HIT;
-        else if (attacking)
+        } else if (attacking) {
             playerAction = ATTACK;
-        else if (moving)
+        } else if (moving) {
             playerAction = RUNNING;
-        else
+        } else
             playerAction = IDLE;
 
         if (inAir) {
@@ -143,24 +159,11 @@ public class Player extends Entity {
         if (startAnimation != playerAction) {
             resetAnimation();
         }
-    }
 
-    public void updateAttackBox() {
-        if (xSpeed >= 0) {
-            attackBox.x = hitbox.x + hitbox.width + (int) (10 * Game.SCALE);
-        } else {
-            attackBox.x = hitbox.x - hitbox.width - (int) (15 * Game.SCALE);
-        }
-        attackBox.y = hitbox.y - 20 * Game.SCALE ;
     }
 
     public void initAttackBox() {
         attackBox = new Rectangle2D.Float(x, y, 25 * Game.SCALE, 50 * Game.SCALE);
-    }
-
-    public void resetAnimation() {
-        animationTick = 0;
-        animationIndex = 0;
     }
 
     public void updatePosition() {
@@ -223,11 +226,6 @@ public class Player extends Entity {
         airSpeed = jumpSpeed;
     }
 
-    private void resetInAir() {
-        inAir = false;
-        airSpeed = 0;
-    }
-
     private void updateXPos(float xSpeed) {
         if (CanMoveHere(hitbox.x + xSpeed, hitbox.y, hitbox.width, hitbox.height, levelData)) {
             hitbox.x += xSpeed;
@@ -259,6 +257,15 @@ public class Player extends Entity {
 
     public BufferedImage createSubImg(BufferedImage image, int row) {
         return image.getSubimage( 78 * row, 0, 78, 58);
+    }
+
+    public void updateAttackBox() {
+        if (xSpeed >= 0) {
+            attackBox.x = hitbox.x + hitbox.width + (int) (10 * Game.SCALE);
+        } else {
+            attackBox.x = hitbox.x - hitbox.width - (int) (15 * Game.SCALE);
+        }
+        attackBox.y = hitbox.y - 20 * Game.SCALE ;
     }
 
     public void loadAnimations() {
@@ -311,19 +318,31 @@ public class Player extends Entity {
         left = false;
     }
 
+    public void resetInAir() {
+        inAir = false;
+        airSpeed = 0;
+    }
+
+    public void resetAnimation() {
+        animationTick = 0;
+        animationIndex = 0;
+    }
+
     public void resetAll() {
         resetDirectionBool();
         resetAnimation();
         resetInAir();
+
         attacking = false;
         hit = false;
         moving = false;
-        playerAction = IDLE;
+        shouldDraw = true;
         currHP = maxHP;
         hitbox.x = x;
         hitbox.y = y;
-
         if (IsEntityInAir(hitbox, levelData))
             inAir = true;
+        enteringRoom = true;
+        playerAction = DOOR_OUT;
     }
 }

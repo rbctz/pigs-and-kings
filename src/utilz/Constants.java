@@ -3,6 +3,27 @@ package utilz;
 import main.Game;
 
 public class Constants {
+    public static final int DEFAULT_SIZE = 32;
+
+    public static class Door {
+        public static final int DOOR_IDLE = 0;
+        public static final int OPENING = 1;
+        public static final int CLOSING = 2;
+        public static final int DOOR_WIDTH = 46;
+        public static final int DOOR_HEIGHT = 56;
+
+        public static int GetDoorSpriteAmount(int doorState) {
+            switch (doorState) {
+                case DOOR_IDLE:
+                    return 1;
+                case OPENING:
+                    return 5;
+                case CLOSING:
+                    return 3;
+            }
+            return 0;
+        }
+    }
 
     public static class UI {
         public static class MenuButtons {

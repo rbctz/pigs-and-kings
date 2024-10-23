@@ -28,7 +28,6 @@ public class Game implements Runnable {
 
     public Game() {
 
-        LoadSave.GetAllLevels();
         initializeClasses();
 
         gamePanel = new GamePanel(this);

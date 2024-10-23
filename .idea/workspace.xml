@@ -5,15 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/11-Door/Closing (46x56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/11-Door/Idle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/11-Door/Opening (46x56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/levels/Decorations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/levels/Door.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/level_one_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lvls/level_one_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/level_one_data_long.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lvls/level_one_data_long.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Pig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/lvls/level_one_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lvls/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/lvls/level_one_data_long.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lvls/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/EnemyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/EnemyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamestates/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamestates/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/LevelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/PauseOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PauseOverlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilz/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilz/HelpMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/HelpMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilz/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilz/LoadSave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +160,9 @@
       <workItem from="1729545098667" duration="36000" />
       <workItem from="1729597776737" duration="229000" />
       <workItem from="1729602241524" duration="3522000" />
-      <workItem from="1729666301167" duration="2566000" />
+      <workItem from="1729666301167" duration="13200000" />
+      <workItem from="1729679696568" duration="16000" />
+      <workItem from="1729681576791" duration="641000" />
     </task>
     <servers />
   </component>

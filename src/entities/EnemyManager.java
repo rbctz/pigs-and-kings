@@ -1,6 +1,7 @@
 package entities;
 
 import gamestates.Playing;
+import levels.Level;
 import main.Game;
 import utilz.LoadSave;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import static utilz.Constants.EnemyConstants.*;
 import static utilz.Constants.PlayerConstants.PLAYER_DAMAGE;
+import static utilz.HelpMethods.GetPigs;
 
 public class EnemyManager {
 
@@ -21,7 +23,6 @@ public class EnemyManager {
     public EnemyManager(Playing playing) {
         this.playing = playing;
         loadEnemyImages();
-        addEnemies();
     }
 
     public void update(int [][] levelData, Player player) {
@@ -35,8 +36,8 @@ public class EnemyManager {
         drawPigs(g, levelOffset);
     }
 
-    public void addEnemies() {
-        pigs = LoadSave.GetPigs();
+    public void loadEnemies(Level level) {
+        pigs = GetPigs(level.image);
     }
 
     public void drawPigs(Graphics g, int levelOffset) {
