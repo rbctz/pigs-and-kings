@@ -20,11 +20,11 @@ A simple pixel-art 2D platformer built using Java. Navigate through levels, avoi
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/pixel-2d-platformer.git
+    git clone https://github.com/rbctz/Platformer.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd pixel-2d-platformer
+    cd Platformer
     ```
 3. Compile and run the game:
     ```bash
@@ -43,6 +43,7 @@ A simple pixel-art 2D platformer built using Java. Navigate through levels, avoi
   
 ## Assets
 All visual and sound assets used in the game are sourced from [Pixel Frog] on itch.io.(https://pixelfrog-assets.itch.io/).
+Inspired by Youtuber Kaarin Gaming
 
 
 ## Contributing
