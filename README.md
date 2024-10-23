@@ -2,13 +2,20 @@
 
 A simple pixel-art 2D platformer built using Java. Navigate through levels, avoid obstacles, defeat enemies, and reach the goal!
 
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Controls](#controls)
+- [Assets](#assets)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 - **Pixel Art Style**: Retro-styled 2D graphics
-- **Smooth Controls**: Responsive character movement with jumping, running, and crouching
 - **Enemy AI**: Basic enemy behavior with chase and attack mechanics
-- **Multiple Levels**: Progress through increasing difficulty
-- **Collectibles**: Score-boosting items scattered across levels
-- **Sound Effects**: Retro sound effects for an immersive experience
+- **Multiple Levels**: Progress through different chambers
+- **Collectibles**: Score-boosting items scattered across levels (Work in progress)
+- **Sound Effects**: Retro sound effects for an immersive experience (Work in progress)
 
 ## Installation
 1. Clone the repository:
@@ -26,13 +33,17 @@ A simple pixel-art 2D platformer built using Java. Navigate through levels, avoi
     ```
 
 ## Controls
-- **Arrow keys**: Move left/right
+- **A**: Move left
+- **D**: Move right
 - **Space**: Jump
 - **Shift**: Sprint
-- **Ctrl**: Crouch
-
+- **K**: Attack
+- **E**: Interact
+- **ESCAPE**: Pause
+  
 ## Assets
-All visual and sound assets used in the game are sourced from [itch.io](https://itch.io). 
+All visual and sound assets used in the game are sourced from [Pixel Frog] on itch.io.(https://pixelfrog-assets.itch.io/).
+
 
 ## Contributing
 1. Fork the repository
