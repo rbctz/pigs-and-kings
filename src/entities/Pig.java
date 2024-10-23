@@ -54,10 +54,11 @@ public class Pig extends Enemy {
                     enemyState = RUN;
                     break;
                 case RUN:
-                    if (canSeePlayer(levelData, player))
+                    if (canSeePlayer(levelData, player)) {
                         turnTowardsPlayer(player);
-                    if (isPlayerInAttackRange(player))
-                        newState(ATTACK);
+                        if (isPlayerInAttackRange(player))
+                            newState(ATTACK);
+                    }
                     move(levelData);
                     break;
                 case ATTACK:

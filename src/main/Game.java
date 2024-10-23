@@ -3,6 +3,8 @@ package main;
 import gamestates.Gamestate;
 import gamestates.Menu;
 import gamestates.Playing;
+import utilz.LoadSave;
+
 import java.awt.*;
 
 public class Game implements Runnable {
@@ -17,7 +19,7 @@ public class Game implements Runnable {
     public final static int UPS = 200;
 
     public final static int TILE_DEFAULT_SIZE = 32;
-    public final static float SCALE = 2.3f;
+    public final static float SCALE = 1.8f;
     public final static int TILES_IN_WIDTH = 26;
     public final static int TILES_IN_HEIGHT = 14;
     public final static int TILE_SIZE = (int) (TILE_DEFAULT_SIZE * SCALE);
@@ -25,10 +27,13 @@ public class Game implements Runnable {
     public final static int GAME_HEIGHT = (TILE_SIZE * TILES_IN_HEIGHT);
 
     public Game() {
+
+        LoadSave.GetAllLevels();
         initializeClasses();
 
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
+        gamePanel.setFocusable(true);
         gamePanel.requestFocus();
 
 

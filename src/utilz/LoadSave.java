@@ -6,8 +6,11 @@ import main.Game;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static utilz.Constants.EnemyConstants.PIG;
@@ -16,7 +19,7 @@ public class LoadSave {
 
     //LEVEL
     public static final String LEVEL_ATLAS = "/Terrain (32x32).png";
-    public static final String LEVEL_ONE_DATA = "/level_one_data_long.png";
+    public static final String LEVEL_ONE_DATA = "/lvls/level_one_data_long.png";
     public static final String LEVEL_DECORATIONS = "/Decorations (32x32).png";
 
     //KING
@@ -57,6 +60,40 @@ public class LoadSave {
     public static final String SMALL_HEART_HIT = "/12-Live and Coins/Small Heart Hit (18x14).png";
     public static final String BIG_HEART = "/12-Live and Coins/Big Heart Idle (18x14).png";
     public static final String BIG_HEART_HIT = "/12-Live and Coins/Big Heart Hit (18x14).png";
+
+    public static BufferedImage[] GetAllLevels() {
+        URL url = LoadSave.class.getResource("/lvls");
+        File file = null;
+
+        try {
+            assert url != null;
+            file = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        assert file != null;
+        File[] files = file.listFiles();
+
+        assert files != null;
+        File[] filesSorted = new File[files.length];
+
+        for (int i = 0; i < files.length; i++)
+            for (int j = 0; j < files.length; j++)
+                if (files[j].getName().equals((i + 1) + ".png"))
+                    filesSorted[i] = files[j];
+
+        BufferedImage[] images = new BufferedImage[filesSorted.length];
+
+        for (int i = 0; i < images.length; i++) {
+            try {
+                images[i] = ImageIO.read(filesSorted[i]);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return images;
+    }
 
     public static BufferedImage GetSpriteAtlas(String filename) {
         BufferedImage sprite = null;

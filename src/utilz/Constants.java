@@ -44,7 +44,7 @@ public class Constants {
             public static final int STATUSBAR_HEIGHT = (int) (STATUSBAR_HEIGHT_DEFAULT * Game.SCALE * 1.5);
 
             public static final int HEART_X_OFFSET = (int) (27 * Game.SCALE);
-            public static final int HEART_X = (int) (16 * Game.SCALE);
+            public static final int HEART_X = (int) (17 * Game.SCALE);
             public static final int HEART_Y = (int) (25 * Game.SCALE);
             public static final int HEART_WIDTH_DEFAULT = 18;
             public static final int HEART_HEIGHT_DEFAULT = 14;

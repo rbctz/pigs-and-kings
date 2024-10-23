@@ -11,7 +11,6 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import static utilz.Constants.PlayerConstants.*;
-import static utilz.Constants.UI.StatusBar.*;
 import static utilz.HelpMethods.*;
 
 public class Player extends Entity {
@@ -24,11 +23,13 @@ public class Player extends Entity {
     public int playerAction = IDLE;
     public boolean moving = false;
     public boolean attacking = false;
+    public boolean hit = false;
     public boolean left, up, right, down;
     public float playerSpeed = 0.8f * Game.SCALE;
     float xSpeed;
     public int[][] levelData;
     public boolean attackChecked = false;
+    public boolean goingLeft = false;
 
     //HP
     public final int maxHP = 3;
@@ -55,10 +56,6 @@ public class Player extends Entity {
     //STATUS BAR UI
     public StatusBar statusBar = new StatusBar(this);
 
-    public boolean hit = false;
-
-
-
     public Player(float x, float y, int width, int height, Playing playing) {
         super(x, y, width, height);
         this.playing = playing;
@@ -74,21 +71,23 @@ public class Player extends Entity {
             return;
         }
         updateAttackBox();
-        updateAnimationTick();
-        setAnimation();
         updatePosition();
+
         if (attacking)
             checkAttack();
+
+        updateAnimationTick();
+        setAnimation();
     }
 
     public void draw(Graphics g, int levelOffset) {
-        if (xSpeed < 0)
-            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 26 * Game.SCALE),
+        if (goingLeft)
+            g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset - levelOffset + (float) width / 2 + 24 * Game.SCALE),
                     (int) (hitbox.y - yDrawOffset), -width, height, null);
         else
             g.drawImage(animations[playerAction][animationIndex], (int) (hitbox.x - xDrawOffset) - levelOffset,
                     (int) (hitbox.y - yDrawOffset), width, height, null);
-//        drawBoxes(g, levelOffset);
+        drawBoxes(g, levelOffset);
         statusBar.draw(g);
     }
 
@@ -111,6 +110,7 @@ public class Player extends Entity {
                 animationIndex = 0;
                 attacking = false;
                 attackChecked = false;
+                hit = false;
             }
         }
     }
@@ -118,22 +118,26 @@ public class Player extends Entity {
     public void setAnimation() {
 
         int startAnimation = playerAction;
-        if (moving) {
+
+        if (hit)
+            playerAction = HIT;
+        else if (attacking)
+            playerAction = ATTACK;
+        else if (moving)
             playerAction = RUNNING;
-        } else {
+        else
             playerAction = IDLE;
-        }
 
         if (inAir) {
-            if (airSpeed < 0) {
-                playerAction = JUMP;
-            } else {
-                playerAction = FALL;
+            if (attacking)
+                playerAction = ATTACK;
+            else {
+                if (airSpeed < 0) {
+                    playerAction = JUMP;
+                } else {
+                    playerAction = FALL;
+                }
             }
-        }
-
-        if (attacking) {
-            playerAction = ATTACK;
         }
 
         if (startAnimation != playerAction) {
@@ -171,16 +175,19 @@ public class Player extends Entity {
 
         xSpeed = 0;
 
-        if (dashing) {
-            if (left)
-                xSpeed = -dashSpeed - playerSpeed;
-            if (right)
-                xSpeed = dashSpeed + playerSpeed;
-        } else {
-            if (left)
-                xSpeed = - playerSpeed;
-            if (right)
-                xSpeed = playerSpeed;
+        if (left) {
+            goingLeft = true;
+            if (dashing)
+                xSpeed -= dashSpeed + playerSpeed;
+            else
+                xSpeed -= playerSpeed;
+        }
+        if (right) {
+            goingLeft = false;
+            if (dashing)
+                xSpeed += dashSpeed + playerSpeed;
+            else
+                xSpeed += playerSpeed;
         }
 
         if (!inAir) {
@@ -231,8 +238,10 @@ public class Player extends Entity {
 
     public void changeHP(int amount) {
         currHP += amount;
-        if (amount < 0)
+        if (amount < 0) {
+            hit = true;
             statusBar.checkHitHeart = true;
+        }
         if (currHP <= 0) {
             currHP = 0;
             //gameOver();
@@ -307,6 +316,7 @@ public class Player extends Entity {
         resetAnimation();
         resetInAir();
         attacking = false;
+        hit = false;
         moving = false;
         playerAction = IDLE;
         currHP = maxHP;
