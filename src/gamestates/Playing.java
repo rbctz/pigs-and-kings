@@ -166,9 +166,9 @@ public class Playing extends State implements StateMethods {
                     break;
                 case KeyEvent.VK_E:
                     if (player.hitbox.x > 47 * TILE_SIZE && player.hitbox.x < 48 * TILE_SIZE && levelManager.levelIndex == 0 ||
-                            player.hitbox.x > 5 * TILE_SIZE && player.hitbox.x < 6 * TILE_SIZE && levelManager.levelIndex == 1) {
+                            player.hitbox.x > 19 * TILE_SIZE && player.hitbox.x < 20 * TILE_SIZE && levelManager.levelIndex == 1) {
                         player.exitingRoom = true;
-                        levelManager.door.doorState = OPENING;
+                        levelManager.door.doorState2 = OPENING;
                     }
                     break;
                 case KeyEvent.VK_SHIFT:

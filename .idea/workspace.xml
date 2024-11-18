@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="" />
+    <list default="true" id="11ffafaa-be4a-4dc6-bd01-86a48b9209c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/lvls/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/lvls/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamestates/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamestates/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/LevelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +63,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/robi/IdeaProjects/Platformer/res&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/robi/IdeaProjects/Platformer/src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -68,11 +76,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\robi\IdeaProjects\Platformer\src" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\src\res" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res\human" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\robi\IdeaProjects\Platformer" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res\lvls" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\res" />
       <recent name="C:\Users\robi\IdeaProjects\Platformer\src" />
@@ -142,7 +152,20 @@
       <workItem from="1729602241524" duration="3522000" />
       <workItem from="1729666301167" duration="13200000" />
       <workItem from="1729679696568" duration="16000" />
-      <workItem from="1729681576791" duration="2708000" />
+      <workItem from="1729681576791" duration="3364000" />
+      <workItem from="1729698577110" duration="612000" />
+      <workItem from="1729753860765" duration="34000" />
+      <workItem from="1729758629779" duration="11000" />
+      <workItem from="1729760877968" duration="55000" />
+      <workItem from="1729771241533" duration="67000" />
+      <workItem from="1729843934692" duration="1629000" />
+      <workItem from="1729845584426" duration="296000" />
+      <workItem from="1729932962915" duration="28000" />
+      <workItem from="1729968889899" duration="80000" />
+      <workItem from="1729975795680" duration="97000" />
+      <workItem from="1730015642175" duration="609000" />
+      <workItem from="1730397768315" duration="540000" />
+      <workItem from="1731932997664" duration="692000" />
     </task>
     <servers />
   </component>

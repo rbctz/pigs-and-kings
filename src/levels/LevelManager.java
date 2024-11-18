@@ -3,8 +3,6 @@ package levels;
 import gamestates.Gamestate;
 import main.Game;
 import utilz.LoadSave;
-import levels.Door.*;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -51,6 +49,9 @@ public class LevelManager {
         }
         if (levelIndex == 1) {
             door.drawLevel2(g, levelOffset);
+        }
+        if (levelIndex == 2) {
+            door.drawLevel3(g, levelOffset);
         }
     }
 

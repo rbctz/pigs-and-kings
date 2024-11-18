@@ -12,21 +12,31 @@ public class Door {
 
     public BufferedImage[][] doorSprite;
     public int doorState = CLOSING;
-    public int animationIndex;
+    public int doorState2 = DOOR_IDLE;
+    public int animationIndex = 0;
+    public int animationIndex2 = 0;
     public int animationSpeed = 80;
     public int animationTick;
+    public int animationTick2;
 
     public void update() {
         updateAnimation();
+        updateAnimation2();
     }
 
     public void drawLevel1(Graphics g, int levelOffset) {
         g.drawImage(doorSprite[doorState][animationIndex], 5 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
-        g.drawImage(doorSprite[doorState][animationIndex], 47 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
+        g.drawImage(doorSprite[doorState2][animationIndex2], 47 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
     }
 
     public void drawLevel2(Graphics g, int levelOffset) {
         g.drawImage(doorSprite[doorState][animationIndex], 5 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
+        g.drawImage(doorSprite[doorState2][animationIndex2], 19 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
+    }
+
+    public void drawLevel3(Graphics g, int levelOffset) {
+        g.drawImage(doorSprite[doorState][animationIndex], 5 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
+        g.drawImage(doorSprite[doorState2][animationIndex2], 35 * Game.TILE_SIZE - levelOffset, (int) (7.5 * Game.TILE_SIZE), 2 * Game.TILE_SIZE, (int) (2.5 * Game.TILE_SIZE), null);
     }
 
     public void importDoorSprite() {
@@ -56,6 +66,18 @@ public class Door {
         }
     }
 
+    public void updateAnimation2() {
+        animationTick2++;
+        if (animationTick2 >= animationSpeed) {
+            animationTick2 = 0;
+            animationIndex2++;
+            if (animationIndex2 >= GetDoorSpriteAmount(doorState2)) {
+                animationIndex2 = 0;
+                doorState2 = DOOR_IDLE;
+            }
+        }
+    }
+
     public void resetAnimation() {
         animationIndex = 0;
         animationTick = 0;
@@ -64,5 +86,6 @@ public class Door {
     public void resetAll() {
         resetAnimation();
         doorState = CLOSING;
+        doorState2 = DOOR_IDLE;
     }
 }

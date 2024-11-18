@@ -22,7 +22,6 @@ public class GameWindow  extends JFrame {
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
             public void windowGainedFocus(WindowEvent e) {
-
             }
 
             @Override

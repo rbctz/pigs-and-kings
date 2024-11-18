@@ -3,7 +3,6 @@ package main;
 import gamestates.Gamestate;
 import gamestates.Menu;
 import gamestates.Playing;
-import utilz.LoadSave;
 
 import java.awt.*;
 
@@ -19,7 +18,7 @@ public class Game implements Runnable {
     public final static int UPS = 200;
 
     public final static int TILE_DEFAULT_SIZE = 32;
-    public final static float SCALE = 1.8f;
+    public final static float SCALE = 2.2f;
     public final static int TILES_IN_WIDTH = 26;
     public final static int TILES_IN_HEIGHT = 14;
     public final static int TILE_SIZE = (int) (TILE_DEFAULT_SIZE * SCALE);
